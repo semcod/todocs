@@ -10,27 +10,26 @@ flowchart TD
         todocs__cli__progress__generate_articles_with_progress["generate_articles_with_progres"]
         todocs__cli__progress__generate_with_rich["generate_with_rich"]
         todocs__cli__progress__generate_without_rich["generate_without_rich"]
-        todocs__cli__main["main"]
-        todocs__cli__utils__detect_org_from_git["detect_org_from_git"]
-        todocs__cli__utils__write_json_report["write_json_report"]
         todocs__cli__commands__generate["generate"]
         todocs__cli__commands__inspect["inspect"]
         todocs__cli__commands__compare["compare"]
         todocs__cli__commands__health["health"]
         todocs__cli__commands__readme["readme"]
         todocs__cli__commands__status["status"]
-        ...["+3 more"]
+        todocs__cli__commands__cards["cards"]
+        todocs__cli__commands__index["index"]
+        todocs__cli__commands___write_html_export["_write_html_export"]
+        ...["+5 more"]
     end
 
     subgraph Core
-        todocs__extractors__makefile_parser__MakefileParser__parse["parse"]
-        todocs__extractors__makefile_parser__MakefileParser___parse_makefile["_parse_makefile"]
-        todocs__extractors__makefile_parser__MakefileParser___collect_phony_targets["_collect_phony_targets"]
-        todocs__extractors__makefile_parser__MakefileParser___parse_target_line["_parse_target_line"]
-        todocs__extractors__makefile_parser__MakefileParser___extract_help_text["_extract_help_text"]
-        todocs__extractors__makefile_parser__MakefileParser___collect_commands["_collect_commands"]
-        todocs__extractors__makefile_parser__MakefileParser___parse_taskfile["_parse_taskfile"]
-        todocs__extractors__makefile_parser__MakefileParser__get_target_names["get_target_names"]
+        todocs__core__ProjectProfile__to_dict["to_dict"]
+        todocs__core__ProjectProfile__to_json["to_json"]
+        todocs__core___run_scoring_phase["_run_scoring_phase"]
+        todocs__core__scan_project["scan_project"]
+        todocs__core___scan_project_with_progress["_scan_project_with_progress"]
+        todocs__core__scan_organization["scan_organization"]
+        todocs__core___categorize("_categorize CC=9")
         todocs__extractors__toon_parser__ToonParser__find_toon_files["find_toon_files"]
         todocs__extractors__toon_parser__ToonParser__parse_all["parse_all"]
         todocs__extractors__toon_parser__ToonParser__parse_map["parse_map"]
@@ -38,7 +37,14 @@ flowchart TD
         todocs__extractors__toon_parser__ToonParser___parse_modules_section["_parse_modules_section"]
         todocs__extractors__toon_parser__ToonParser___parse_details_section["_parse_details_section"]
         todocs__extractors__toon_parser__ToonParser___parse_class_line["_parse_class_line"]
-        ...["+178 more"]
+        todocs__extractors__toon_parser__ToonParser___parse_function_line["_parse_function_line"]
+        ...["+267 more"]
     end
 
-    class todocs__extractors__makefile_parser__MakefileParser__parse,todocs__extractors__makefile_parser__MakefileParser___parse_makefile,todocs__extractors__makefile_parser__MakefileParser___collect_phony_targets,todocs__extractors__makefile_parser__MakefileParser___parse_target_line,todocs__extractors__makefile_parser__MakefileParser___extract_help_text,todocs__extractors__makefile_parser__MakefileParser___collect_commands,todocs__extractors__makefile_parser__MakefileParser___parse_taskfile,todocs__extractors__makefile_parser__MakefileParser__get_target_names,todocs__extractors__toon_parser__ToonParser__find_toon_files,todocs__extractors__toon_parser__ToonParser__parse_all entry
+    subgraph Exporters
+        project__map__toon___write_html_export["_write_html_export"]
+        project__map__toon___write_json_export["_write_json_export"]
+        project__map__toon__export_cmd["export_cmd"]
+    end
+
+    class todocs__core__ProjectProfile__to_dict,todocs__core__ProjectProfile__to_json,todocs__extractors__toon_parser__ToonParser__find_toon_files,todocs__extractors__toon_parser__ToonParser__parse_all,todocs__extractors__toon_parser__ToonParser__parse_map,todocs__extractors__toon_parser__ToonParser___parse_map_header,todocs__extractors__toon_parser__ToonParser___parse_modules_section,todocs__extractors__toon_parser__ToonParser___parse_details_section,todocs__extractors__toon_parser__ToonParser___parse_class_line,todocs__extractors__toon_parser__ToonParser___parse_function_line entry

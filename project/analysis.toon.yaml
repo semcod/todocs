@@ -1,72 +1,116 @@
-# code2llm | 36f 5627L | python:35,shell:1 | 2026-04-13
-# CC̄=4.4 | critical:0/279 | dups:0 | cycles:0
+# code2llm | 64f 43927L | python:45,yaml:14,txt:2,toml:1,shell:1 | 2026-04-29
+# CC̄=3.6 | critical:3/371 | dups:0 | cycles:0
 
-HEALTH[1]:
+HEALTH[3]:
   🟡 CC    main CC=25 (limit:15)
+  🟡 CC    _summarize_with_nlp CC=16 (limit:15)
+  🟡 CC    extract_key_features CC=16 (limit:15)
 
 REFACTOR[1]:
-  1. split 1 high-CC methods  (CC>15)
+  1. split 3 high-CC methods  (CC>15)
 
-PIPELINES[219]:
-  [1] Src [main]: main → scan_project → create_scan_filter
+PIPELINES[231]:
+  [1] Src [main]: main → _analyze_import_graph → _print_section_header
       PURITY: 100% pure
-  [2] Src [main]: main → scan_project → create_scan_filter
+  [2] Src [main]: main → scan_organization → _discover_projects → _get_default_excludes
       PURITY: 100% pure
-  [3] Src [main]: main → scan_organization → scan_project → create_scan_filter
+  [3] Src [main]: main → scan_project → create_scan_filter
       PURITY: 100% pure
-  [4] Src [main]: main → scan_organization → scan_project → create_scan_filter
+  [4] Src [main]: main → scan_project → create_scan_filter
       PURITY: 100% pure
-  [5] Src [main]: main → analyze_entry_points → print_section
+  [5] Src [main]: main → scan_organization → _discover_projects → _get_default_excludes
       PURITY: 100% pure
 
 LAYERS:
-  todocs/                         CC̄=4.4    ←in:14  →out:0
-  │ comparison                 482L  1C   23m  CC=14     ←0
+  examples/                       CC̄=6.0    ←in:0  →out:27  !! split
+  │ organization_health_report   201L  0C    6m  CC=9      ←0
+  │ custom_analysis            187L  0C    8m  CC=10     ←0
+  │ api_surface_deep           176L  0C    7m  CC=7      ←0
+  │ article_sections_demo      119L  0C    1m  CC=4      ←0
+  │ !! scan_single                 97L  0C    1m  CC=25     ←0
+  │ scan_org                    61L  0C    1m  CC=9      ←0
+  │
+  todocs/                         CC̄=4.4    ←in:19  →out:0
+  │ !! analysis.yaml            33924L  0C    0m  CC=0.0    ←0
+  │ !! project.yaml               598L  0C    0m  CC=0.0    ←0
+  │ comparison                 489L  1C   22m  CC=14     ←0
   │ article_sections           460L  0C   18m  CC=12     ←2
-  │ core                       407L  5C   11m  CC=11     ←6
+  │ core                       444L  5C   14m  CC=12     ←6
+  │ !! readme_parser              361L  1C   13m  CC=16     ←0
   │ toon_parser                343L  1C   17m  CC=11     ←0
-  │ api_surface                290L  1C   13m  CC=13     ←0
-  │ commands                   282L  0C    9m  CC=4      ←0
-  │ code_metrics               265L  1C   15m  CC=10     ←0
-  │ import_graph               237L  1C   13m  CC=9      ←0
-  │ structure                  234L  1C   12m  CC=7      ←0
-  │ metadata                   211L  1C    9m  CC=10     ←0
-  │ status_report_gen          204L  1C   14m  CC=11     ←0
-  │ docker_parser              174L  1C    6m  CC=13     ←0
+  │ commands                   289L  0C   11m  CC=4      ←0
+  │ api_surface                289L  1C   13m  CC=13     ←0
+  │ code_metrics               264L  1C   15m  CC=10     ←0
+  │ import_graph               236L  1C   13m  CC=9      ←0
+  │ structure                  233L  1C   12m  CC=7      ←0
+  │ metadata                   219L  1C    9m  CC=13     ←0
+  │ status_report_gen          200L  1C   13m  CC=11     ←0
+  │ docker_parser              198L  1C   13m  CC=13     ←0
   │ progress                   172L  0C    6m  CC=7      ←1
-  │ html                       164L  1C    5m  CC=12     ←0
+  │ html                       160L  1C    4m  CC=12     ←0
   │ makefile_parser            153L  1C    9m  CC=10     ←0
-  │ readme_parser              153L  1C    9m  CC=8      ←0
   │ __init__                   150L  1C    6m  CC=8      ←1
   │ table_formatter            145L  1C    7m  CC=8      ←0
-  │ article                    145L  1C    5m  CC=13     ←0
-  │ project_card_gen           135L  1C   11m  CC=5      ←0
+  │ article                    140L  1C    4m  CC=13     ←0
   │ dependencies               133L  1C   10m  CC=8      ←0
-  │ org_index_gen              118L  1C    9m  CC=6      ←0
-  │ json                       104L  1C    6m  CC=14     ←0
+  │ project_card_gen           131L  1C   10m  CC=5      ←0
+  │ org_index_gen              114L  1C    8m  CC=6      ←0
+  │ markdown                   112L  1C    7m  CC=4      ←0
   │ changelog_parser           103L  1C    5m  CC=9      ←0
   │ maturity                   103L  1C    2m  CC=14     ←0
-  │ markdown                    81L  1C    2m  CC=8      ←0
+  │ json                       100L  1C    5m  CC=14     ←0
   │ utils                       70L  0C    2m  CC=5      ←1
   │ __init__                    53L  0C    1m  CC=1      ←0
+  │ prompt.txt                  37L  0C    0m  CC=0.0    ←0
+  │ utils                       21L  0C    1m  CC=4      ←4
+  │ base                        14L  1C    1m  CC=1      ←0
   │ __init__                    10L  0C    0m  CC=0.0    ←0
   │ __main__                     6L  0C    0m  CC=0.0    ←0
+  │ __init__                     5L  0C    0m  CC=0.0    ←0
+  │ __init__                     5L  0C    0m  CC=0.0    ←0
   │ __init__                     1L  0C    0m  CC=0.0    ←0
   │ __init__                     1L  0C    0m  CC=0.0    ←0
   │ __init__                     1L  0C    0m  CC=0.0    ←0
-  │ __init__                     1L  0C    0m  CC=0.0    ←0
-  │ __init__                     1L  0C    0m  CC=0.0    ←0
+  │
+  testql-scenarios/               CC̄=0.0    ←in:0  →out:0
+  │ generated-from-pytests.testql.toon.yaml    48L  0C    1m  CC=0.0    ←0
+  │ generated-cli-tests.testql.toon.yaml    20L  0C    0m  CC=0.0    ←0
+  │
+  project/                        CC̄=0.0    ←in:0  →out:0
+  │ !! calls.yaml                1033L  0C    0m  CC=0.0    ←0
+  │ map.toon.yaml              313L  0C   75m  CC=0.0    ←0
+  │ calls.toon.yaml            178L  0C    0m  CC=0.0    ←0
+  │ analysis.toon.yaml         114L  0C    0m  CC=0.0    ←0
+  │ duplication.toon.yaml       82L  0C    0m  CC=0.0    ←0
+  │ project.toon.yaml           53L  0C    0m  CC=0.0    ←0
+  │ validation.toon.yaml        51L  0C    0m  CC=0.0    ←0
+  │ evolution.toon.yaml         47L  0C    0m  CC=0.0    ←0
+  │ prompt.txt                  47L  0C    0m  CC=0.0    ←0
   │
   ./                              CC̄=0.0    ←in:0  →out:0
-  │ project.sh                  35L  0C    0m  CC=0.0    ←0
+  │ goal.yaml                  429L  0C    0m  CC=0.0    ←0
+  │ pyqual.yaml                 55L  0C    0m  CC=0.0    ←0
+  │ pyproject.toml              54L  0C    0m  CC=0.0    ←0
+  │ project.sh                  50L  0C    0m  CC=0.0    ←0
+  │ Makefile                     0L  0C    0m  CC=0.0    ←0
   │
+  docs/                           CC̄=0.0    ←in:0  →out:0
+  │ quickstart                  16L  0C    0m  CC=0.0    ←0
+  │ advanced_usage               9L  0C    0m  CC=0.0    ←0
+  │
+  ── zero ──
+     Makefile                                  0L
 
 COUPLING:
-                  todocs  todocs.cli
-      todocs          ──         ←14  hub
-  todocs.cli          14          ──  !! fan-out
+                              examples  todocs.generators             todocs         todocs.cli
+           examples                 ──                 22                  5                     !! fan-out
+  todocs.generators                ←22                 ──                                        hub
+             todocs                 ←5                                    ──                ←14  hub
+         todocs.cli                                                       14                 ──  !! fan-out
   CYCLES: none
-  HUB: todocs/ (fan-in=14)
+  HUB: todocs/ (fan-in=19)
+  HUB: todocs.generators/ (fan-in=22)
+  SMELL: examples/ fan-out=27 → split needed
   SMELL: todocs.cli/ fan-out=14 → split needed
 
 EXTERNAL:

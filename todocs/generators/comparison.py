@@ -451,9 +451,20 @@ class ComparisonGenerator(BaseGenerator):
         lang = p.tech_stack.primary_language
         version = p.metadata.version or "unversioned"
 
-        desc = p.metadata.description or "No description available."
-        if len(desc) > 100:
-            desc = desc[:97] + "..."
+        # Prioritize metadata.description (from pyproject.toml) as it's usually well-written
+        desc = p.metadata.description or ""
+        # Only use README if metadata description is missing or too short
+        if not desc or len(desc) < 20:
+            readme_desc = p.readme_sections.get("description", "")
+            if readme_desc and len(readme_desc) > 20:
+                desc = readme_desc
+
+        if not desc:
+            desc = "No description available."
+
+        # Increased limit from 100 to 300 characters for better descriptions
+        if len(desc) > 300:
+            desc = desc[:297] + "..."
 
         deps = p.dependencies[:5]
         deps_str = ", ".join(deps) if deps else "none major"

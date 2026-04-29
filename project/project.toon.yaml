@@ -1,52 +1,51 @@
-# todocs | 255 func | 28f | 8216L | python | 2026-04-13
+# todocs | 371 func | 38f | 53508L | python | 2026-04-29
 
 HEALTH:
-  CC̄=4.4  critical=24 (limit:10)  dup=0  cycles=0
+  CC̄=3.6  critical=31 (limit:10)  dup=0  cycles=0
 
 ALERTS[20]:
-  !!  high_fan_out     DockerParser._parse_dockerfile = 16 (limit:10)
-  !!  high_fan_out     MarkdownOutput.write_all = 16 (limit:10)
-  !!  high_fan_out     export_cmd = 16 (limit:10)
-  !!  high_fan_out     scan_organization = 16 (limit:10)
+  !!! cc_exceeded      main = 25 (limit:15)
+  !!! high_fan_out     main = 20 (limit:10)
   !!  high_fan_out     ArticleGenerator._render_article = 15 (limit:10)
+  !   cc_exceeded      ReadmeParser._summarize_with_nlp = 16 (limit:15)
+  !   cc_exceeded      ReadmeParser.extract_key_features = 16 (limit:15)
+  !   high_fan_out     main = 14 (limit:10)
+  !   high_fan_out     _run_extraction_phase = 14 (limit:10)
   !   high_fan_out     DockerParser._parse_compose = 14 (limit:10)
   !   high_fan_out     readme = 14 (limit:10)
-  !   high_fan_out     _run_extraction_phase = 14 (limit:10)
-  !   high_fan_out     ToonParser.parse_flow = 13 (limit:10)
-  !   high_fan_out     inspect = 13 (limit:10)
+  !   high_fan_out     export_cmd = 14 (limit:10)
 
-MODULES[36] (top by size):
-  M[todocs/generators/comparison.py] 482L C:1 F:23 CC↑14 D:0 (python)
+MODULES[64] (top by size):
+  M[todocs/project/analysis.yaml] 33924L C:0 F:0 CC↑0 D:0 (yaml)
+  M[project/calls.yaml] 1033L C:0 F:0 CC↑0 D:0 (yaml)
+  M[todocs/project/project.yaml] 598L C:0 F:0 CC↑0 D:0 (yaml)
+  M[todocs/generators/comparison.py] 489L C:1 F:22 CC↑14 D:0 (python)
   M[todocs/generators/article_sections.py] 460L C:0 F:18 CC↑12 D:2 (python)
-  M[todocs/core.py] 407L C:5 F:11 CC↑11 D:6 (python)
+  M[todocs/core.py] 444L C:5 F:14 CC↑12 D:6 (python)
+  M[goal.yaml] 429L C:0 F:0 CC↑0 D:0 (yaml)
+  M[todocs/extractors/readme_parser.py] 361L C:1 F:13 CC↑16 D:0 (python)
   M[todocs/extractors/toon_parser.py] 343L C:1 F:17 CC↑11 D:0 (python)
-  M[todocs/analyzers/api_surface.py] 290L C:1 F:13 CC↑13 D:0 (python)
-  M[todocs/cli/commands.py] 282L C:0 F:9 CC↑4 D:0 (python)
-  M[todocs/analyzers/code_metrics.py] 265L C:1 F:15 CC↑10 D:0 (python)
-  M[todocs/analyzers/import_graph.py] 237L C:1 F:13 CC↑9 D:0 (python)
-  M[todocs/analyzers/structure.py] 234L C:1 F:12 CC↑7 D:0 (python)
-  M[todocs/extractors/metadata.py] 211L C:1 F:9 CC↑10 D:0 (python)
-  M[todocs/generators/status_report_gen.py] 204L C:1 F:14 CC↑11 D:0 (python)
-  M[todocs/extractors/docker_parser.py] 174L C:1 F:6 CC↑13 D:0 (python)
-  M[todocs/cli/progress.py] 172L C:0 F:6 CC↑7 D:1 (python)
-  M[todocs/outputs/html.py] 164L C:1 F:5 CC↑12 D:0 (python)
-  M[todocs/extractors/makefile_parser.py] 153L C:1 F:9 CC↑10 D:0 (python)
-  LANGS: python:35/shell:1
+  M[project/map.toon.yaml] 313L C:0 F:75 CC↑0 D:0 (yaml)
+  M[todocs/analyzers/api_surface.py] 289L C:1 F:13 CC↑13 D:0 (python)
+  M[todocs/cli/commands.py] 289L C:0 F:11 CC↑4 D:0 (python)
+  M[todocs/analyzers/code_metrics.py] 264L C:1 F:15 CC↑10 D:0 (python)
+  M[todocs/analyzers/import_graph.py] 236L C:1 F:13 CC↑9 D:0 (python)
+  M[todocs/analyzers/structure.py] 233L C:1 F:12 CC↑7 D:0 (python)
+  LANGS: python:45/yaml:14/txt:2/other:1/shell:1/toml:1
 
 HOTSPOTS[10]:
-  ★ DockerParser._parse_dockerfile fan=16  // Extract FROM images, EXPOSE ports, ENTRYPOINT from Dockerfile.
-  ★ MarkdownOutput.write_all fan=16  // Write all markdown outputs. Returns list of written paths.
-  ★ export_cmd fan=16  // Export with 16 outputs
-  ★ scan_organization fan=16  // Scan all projects under root_path and return profiles.
-
-Args:
-    root_path: Roo
+  ★ main fan=20  // Orchestrates 20 calls
   ★ ArticleGenerator._render_article fan=15  // Render complete article by combining all sections.
+  ★ main fan=14  // Orchestrates 14 calls
+  ★ _run_extraction_phase fan=14  // Phase 1: Extract data from project files without analysis.
+  ★ DockerParser._parse_compose fan=14  // Extract services, ports, volumes from docker-compose.yml.
 
-REFACTOR[3]:
-  [1] M/M Reduce DockerParser._parse_dockerfile fan-out (currently 16)
-  [2] M/M Reduce MarkdownOutput.write_all fan-out (currently 16)
-  [3] M/M Reduce export_cmd fan-out (currently 16)
+REFACTOR[8]:
+  [1] H/L Split main (CC=25)
+  [2] H/H Split god module project/calls.yaml (1033L, 0 classes)
+  [3] H/H Split god module todocs/project/analysis.yaml (33924L, 0 classes)
+  [4] H/H Split god module todocs/project/project.yaml (598L, 0 classes)
+  [5] M/L Split ReadmeParser._summarize_with_nlp (CC=16)
 
 EVOLUTION:
-  2026-04-13 CC̄=4.4 crit=24 8216L // Automated analysis
+  2026-04-29 CC̄=3.6 crit=31 53508L // Automated analysis

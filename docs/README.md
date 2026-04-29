@@ -1,7 +1,7 @@
 <!-- code2docs:start --># todocs
 
-![version](https://img.shields.io/badge/version-0.1.0-blue) ![python](https://img.shields.io/badge/python-%3E%3D3.10-blue) ![coverage](https://img.shields.io/badge/coverage-unknown-lightgrey) ![functions](https://img.shields.io/badge/functions-279-green)
-> **279** functions | **27** classes | **47** files | CC̄ = 4.6
+![version](https://img.shields.io/badge/version-0.1.0-blue) ![python](https://img.shields.io/badge/python-%3E%3D3.10-blue) ![coverage](https://img.shields.io/badge/coverage-unknown-lightgrey) ![functions](https://img.shields.io/badge/functions-288-green)
+> **288** functions | **28** classes | **49** files | CC̄ = 4.4
 
 > Auto-generated project documentation from source code analysis.
 
@@ -147,7 +147,7 @@ Content outside the markers is preserved when regenerating. Enable this with `sy
 
 ```
 todocs/
-├── project        ├── quickstart        ├── advanced_usage    ├── article_sections_demo    ├── scan_org    ├── scan_single    ├── cli/├── todocs/    ├── api_surface_deep    ├── organization_health_report    ├── custom_analysis        ├── makefile_parser    ├── extractors/        ├── toon_parser        ├── readme_parser        ├── changelog_parser        ├── quickstart        ├── advanced_usage    ├── formatters/        ├── docker_parser        ├── table_formatter        ├── progress        ├── __main__        ├── utils        ├── markdown        ├── commands    ├── outputs/        ├── json        ├── html    ├── generators/        ├── org_index_gen        ├── article        ├── project_card_gen        ├── article_sections        ├── status_report_gen    ├── utils/        ├── structure    ├── analyzers/        ├── comparison        ├── dependencies        ├── maturity        ├── import_graph        ├── code_metrics        ├── api_surface    ├── core        ├── metadata```
+├── project        ├── advanced_usage    ├── custom_analysis        ├── quickstart    ├── article_sections_demo    ├── scan_org    ├── scan_single├── todocs/    ├── cli/    ├── api_surface_deep        ├── makefile_parser        ├── toon_parser    ├── organization_health_report    ├── extractors/        ├── readme_parser        ├── docker_parser        ├── quickstart        ├── advanced_usage    ├── formatters/        ├── changelog_parser        ├── table_formatter        ├── progress        ├── __main__        ├── utils        ├── commands        ├── markdown    ├── outputs/        ├── json        ├── base        ├── html        ├── org_index_gen    ├── generators/        ├── article        ├── article_sections        ├── project_card_gen        ├── status_report_gen    ├── utils/        ├── structure    ├── analyzers/        ├── dependencies        ├── comparison        ├── maturity        ├── utils        ├── code_metrics        ├── import_graph        ├── api_surface    ├── core        ├── metadata```
 
 ## API Overview
 
@@ -156,11 +156,12 @@ todocs/
 - **`MakefileParser`** — Extract targets and structure from Makefile or Taskfile.yml.
 - **`ToonParser`** — Parse .toon files into structured data.
 - **`ReadmeParser`** — Extract structured sections from a README.md file.
-- **`ChangelogParser`** — Extract structured entries from CHANGELOG.md.
 - **`DockerParser`** — Extract Docker infrastructure from Dockerfile and docker-compose.yml.
+- **`ChangelogParser`** — Extract structured entries from CHANGELOG.md.
 - **`TableFormatter`** — Generate markdown comparison tables from project profiles.
 - **`MarkdownOutput`** — Write project profiles as markdown files (WordPress-ready).
 - **`JSONOutput`** — Write project profiles as structured JSON for APIs and dashboards.
+- **`BaseGenerator`** — Base class for all generators with common initialization.
 - **`HTMLOutput`** — Write project profiles as a standalone HTML report.
 - **`OrgIndexGenerator`** — Generate an index.md catalog page for all projects in an organization.
 - **`ArticleGenerator`** — Generate markdown articles for WordPress from analyzed project profiles.
@@ -168,11 +169,11 @@ todocs/
 - **`StatusReportGenerator`** — Generate a comprehensive organization status report.
 - **`GitignoreParser`** — Parse and match .gitignore patterns.
 - **`StructureAnalyzer`** — Analyze project directory structure.
-- **`ComparisonGenerator`** — Generate comparative analysis articles across projects.
 - **`DependencyAnalyzer`** — Extract project dependencies without executing anything.
+- **`ComparisonGenerator`** — Generate comparative analysis articles across projects.
 - **`MaturityScorer`** — Compute a maturity score (0-100) for a project.
-- **`ImportGraphAnalyzer`** — Analyze import relationships between project modules.
 - **`CodeMetricsAnalyzer`** — Analyze code metrics: lines, complexity, maintainability.
+- **`ImportGraphAnalyzer`** — Analyze import relationships between project modules.
 - **`APISurfaceAnalyzer`** — Detect public API surface of a project.
 - **`TechStack`** — Detected technology stack.
 - **`CodeStats`** — Aggregated code statistics.
@@ -183,6 +184,7 @@ todocs/
 
 ### Functions
 
+- `main()` — —
 - `main()` — —
 - `main()` — —
 - `main()` — —
@@ -198,7 +200,6 @@ todocs/
 - `analyze_tech_stacks(profiles)` — Analyze technology distribution across projects.
 - `find_critical_projects(profiles, threshold)` — Find projects with low maturity scores.
 - `print_health_summary(profiles, org_name)` — Print a formatted health summary to console.
-- `main()` — —
 - `main()` — —
 - `discover_and_show_progress(root, exclude, console)` — Discover projects and show progress. Returns list of project directories.
 - `scan_with_progress(root, exclude, console, project_dirs)` — Scan projects with real-time progress feedback.
@@ -233,6 +234,7 @@ todocs/
 - `render_usage(p)` — Render installation/usage section.
 - `render_footer(generated_at)` — Render article footer.
 - `create_scan_filter(project_path, max_depth, extra_excludes)` — Create a filter function for scanning with depth and gitignore support.
+- `should_skip(path, skip_dirs)` — Check if path should be skipped based on directory names.
 - `scan_project(project_path, max_depth)` — Analyze a single project and return its profile.
 - `scan_organization(root_path, exclude, max_depth, progress_callback)` — Scan all projects under root_path and return profiles.
 - `generate_articles(profiles, output_dir, org_name, org_url)` — Generate WordPress-ready markdown articles for each project.
@@ -257,9 +259,10 @@ todocs/
 📄 `todocs.analyzers.import_graph` (13 functions, 1 classes)
 📄 `todocs.analyzers.maturity` (2 functions, 1 classes)
 📄 `todocs.analyzers.structure` (12 functions, 1 classes)
+📄 `todocs.analyzers.utils` (1 functions)
 📦 `todocs.cli` (1 functions)
 📄 `todocs.cli.__main__`
-📄 `todocs.cli.commands` (9 functions)
+📄 `todocs.cli.commands` (11 functions)
 📄 `todocs.cli.progress` (6 functions)
 📄 `todocs.cli.utils` (2 functions)
 📄 `todocs.core` (11 functions, 5 classes)
@@ -267,7 +270,7 @@ todocs/
 📄 `todocs.examples.quickstart`
 📦 `todocs.extractors`
 📄 `todocs.extractors.changelog_parser` (5 functions, 1 classes)
-📄 `todocs.extractors.docker_parser` (6 functions, 1 classes)
+📄 `todocs.extractors.docker_parser` (13 functions, 1 classes)
 📄 `todocs.extractors.makefile_parser` (9 functions, 1 classes)
 📄 `todocs.extractors.metadata` (9 functions, 1 classes)
 📄 `todocs.extractors.readme_parser` (9 functions, 1 classes)
@@ -275,16 +278,17 @@ todocs/
 📦 `todocs.formatters`
 📄 `todocs.formatters.table_formatter` (7 functions, 1 classes)
 📦 `todocs.generators`
-📄 `todocs.generators.article` (5 functions, 1 classes)
+📄 `todocs.generators.article` (4 functions, 1 classes)
 📄 `todocs.generators.article_sections` (18 functions)
-📄 `todocs.generators.comparison` (23 functions, 1 classes)
-📄 `todocs.generators.org_index_gen` (9 functions, 1 classes)
-📄 `todocs.generators.project_card_gen` (11 functions, 1 classes)
-📄 `todocs.generators.status_report_gen` (14 functions, 1 classes)
+📄 `todocs.generators.base` (1 functions, 1 classes)
+📄 `todocs.generators.comparison` (22 functions, 1 classes)
+📄 `todocs.generators.org_index_gen` (8 functions, 1 classes)
+📄 `todocs.generators.project_card_gen` (10 functions, 1 classes)
+📄 `todocs.generators.status_report_gen` (13 functions, 1 classes)
 📦 `todocs.outputs`
-📄 `todocs.outputs.html` (5 functions, 1 classes)
-📄 `todocs.outputs.json` (6 functions, 1 classes)
-📄 `todocs.outputs.markdown` (2 functions, 1 classes)
+📄 `todocs.outputs.html` (4 functions, 1 classes)
+📄 `todocs.outputs.json` (5 functions, 1 classes)
+📄 `todocs.outputs.markdown` (7 functions, 1 classes)
 📦 `todocs.utils` (6 functions, 1 classes)
 
 ## Requirements

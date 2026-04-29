@@ -1,0 +1,177 @@
+# code2llm call graph | /home/tom/github/wronai/todocs
+# nodes: 63 | edges: 65 | modules: 17
+# CC̄=3.6
+
+HUBS[20]:
+  examples.article_sections_demo.main
+    CC=4  in:0  out:64  total:64
+  examples.scan_single.main
+    CC=25  in:0  out:57  total:57
+  examples.organization_health_report.print_health_summary
+    CC=9  in:1  out:48  total:49
+  todocs.generators.article_sections.render_architecture
+    CC=12  in:2  out:33  total:35
+  examples.scan_org.main
+    CC=9  in:0  out:26  total:26
+  examples.api_surface_deep.main
+    CC=3  in:0  out:26  total:26
+  examples.api_surface_deep.analyze_public_symbols
+    CC=7  in:1  out:24  total:25
+  examples.organization_health_report.main
+    CC=4  in:0  out:23  total:23
+  examples.custom_analysis._analyze_api_surface
+    CC=10  in:1  out:22  total:23
+  todocs.generators.article_sections.render_metrics
+    CC=4  in:3  out:19  total:22
+  todocs.cli.progress.generate_without_rich
+    CC=6  in:1  out:20  total:21
+  todocs.cli.commands.readme
+    CC=4  in:0  out:21  total:21
+  examples.custom_analysis._analyze_import_graph
+    CC=7  in:1  out:19  total:20
+  todocs.generators.article_sections.render_tech_stack
+    CC=8  in:3  out:16  total:19
+  todocs.cli.commands.export_cmd
+    CC=3  in:0  out:19  total:19
+  todocs.cli.commands.compare
+    CC=2  in:0  out:18  total:18
+  todocs.core.generate_articles
+    CC=6  in:3  out:15  total:18
+  examples.custom_analysis._analyze_toon_files
+    CC=6  in:1  out:17  total:18
+  todocs.cli.commands.index
+    CC=2  in:0  out:17  total:17
+  todocs.cli.commands.inspect
+    CC=3  in:0  out:17  total:17
+
+MODULES:
+  examples.api_surface_deep  [7 funcs]
+    analyze_cli_commands  CC=7  out:13
+    analyze_entry_points  CC=3  out:5
+    analyze_public_symbols  CC=7  out:24
+    analyze_rest_endpoints  CC=6  out:15
+    analyze_symbol_sources  CC=5  out:13
+    main  CC=3  out:26
+    print_section  CC=1  out:4
+  examples.article_sections_demo  [1 funcs]
+    main  CC=4  out:64
+  examples.custom_analysis  [8 funcs]
+    _analyze_api_surface  CC=10  out:22
+    _analyze_code_metrics  CC=3  out:11
+    _analyze_docker  CC=7  out:13
+    _analyze_import_graph  CC=7  out:19
+    _analyze_makefile  CC=4  out:6
+    _analyze_toon_files  CC=6  out:17
+    _print_section_header  CC=1  out:3
+    main  CC=2  out:12
+  examples.organization_health_report  [3 funcs]
+    analyze_maturity_distribution  CC=5  out:6
+    main  CC=4  out:23
+    print_health_summary  CC=9  out:48
+  examples.scan_org  [1 funcs]
+    main  CC=9  out:26
+  examples.scan_single  [1 funcs]
+    main  CC=25  out:57
+  todocs.analyzers.api_surface  [1 funcs]
+    _should_skip  CC=1  out:1
+  todocs.analyzers.code_metrics  [1 funcs]
+    _should_skip  CC=1  out:1
+  todocs.analyzers.import_graph  [1 funcs]
+    _should_skip  CC=1  out:1
+  todocs.analyzers.structure  [1 funcs]
+    _should_skip  CC=1  out:1
+  todocs.analyzers.utils  [1 funcs]
+    should_skip  CC=4  out:1
+  todocs.cli.commands  [8 funcs]
+    cards  CC=1  out:15
+    compare  CC=2  out:18
+    export_cmd  CC=3  out:19
+    health  CC=1  out:15
+    index  CC=2  out:17
+    inspect  CC=3  out:17
+    readme  CC=4  out:21
+    status  CC=1  out:15
+  todocs.cli.progress  [6 funcs]
+    discover_and_show_progress  CC=1  out:8
+    generate_articles_with_progress  CC=1  out:7
+    generate_with_rich  CC=3  out:11
+    generate_without_rich  CC=6  out:20
+    print_project_summary  CC=7  out:10
+    scan_with_progress  CC=1  out:10
+  todocs.core  [12 funcs]
+    _categorize  CC=9  out:7
+    _discover_projects  CC=4  out:8
+    _generate_summary  CC=12  out:11
+    _get_default_excludes  CC=1  out:0
+    _is_valid_project_dir  CC=6  out:4
+    _run_analysis_phase  CC=2  out:13
+    _run_extraction_phase  CC=2  out:14
+    _run_scoring_phase  CC=1  out:4
+    _scan_project_with_progress  CC=3  out:3
+    generate_articles  CC=6  out:15
+  todocs.generators.article  [1 funcs]
+    _render_article  CC=3  out:15
+  todocs.generators.article_sections  [9 funcs]
+    render_api_surface  CC=8  out:14
+    render_architecture  CC=12  out:33
+    render_dependencies  CC=8  out:12
+    render_frontmatter  CC=6  out:5
+    render_header  CC=7  out:8
+    render_maturity  CC=3  out:6
+    render_metrics  CC=4  out:19
+    render_overview  CC=6  out:6
+    render_tech_stack  CC=8  out:16
+  todocs.utils  [1 funcs]
+    create_scan_filter  CC=2  out:10
+
+EDGES:
+  examples.custom_analysis._analyze_import_graph → examples.custom_analysis._print_section_header
+  examples.custom_analysis._analyze_api_surface → examples.custom_analysis._print_section_header
+  examples.custom_analysis._analyze_toon_files → examples.custom_analysis._print_section_header
+  examples.custom_analysis._analyze_makefile → examples.custom_analysis._print_section_header
+  examples.custom_analysis._analyze_docker → examples.custom_analysis._print_section_header
+  examples.custom_analysis._analyze_code_metrics → examples.custom_analysis._print_section_header
+  examples.custom_analysis.main → examples.custom_analysis._analyze_import_graph
+  examples.custom_analysis.main → examples.custom_analysis._analyze_api_surface
+  examples.custom_analysis.main → examples.custom_analysis._analyze_toon_files
+  examples.custom_analysis.main → examples.custom_analysis._analyze_makefile
+  examples.custom_analysis.main → examples.custom_analysis._analyze_docker
+  examples.custom_analysis.main → examples.custom_analysis._analyze_code_metrics
+  examples.organization_health_report.print_health_summary → examples.organization_health_report.analyze_maturity_distribution
+  examples.organization_health_report.main → todocs.core.scan_organization
+  examples.article_sections_demo.main → todocs.core.scan_project
+  examples.scan_single.main → todocs.core.scan_project
+  examples.scan_org.main → todocs.core.scan_organization
+  examples.scan_org.main → todocs.core.generate_articles
+  examples.api_surface_deep.analyze_entry_points → examples.api_surface_deep.print_section
+  examples.api_surface_deep.analyze_cli_commands → examples.api_surface_deep.print_section
+  examples.api_surface_deep.analyze_public_symbols → examples.api_surface_deep.print_section
+  examples.api_surface_deep.analyze_rest_endpoints → examples.api_surface_deep.print_section
+  examples.api_surface_deep.analyze_symbol_sources → examples.api_surface_deep.print_section
+  examples.api_surface_deep.main → examples.api_surface_deep.analyze_entry_points
+  todocs.core._run_scoring_phase → todocs.core._categorize
+  todocs.core._run_scoring_phase → todocs.core._generate_summary
+  todocs.core.scan_project → todocs.utils.create_scan_filter
+  todocs.core.scan_project → todocs.core._run_extraction_phase
+  todocs.core.scan_project → todocs.core._run_analysis_phase
+  todocs.core.scan_project → todocs.core._run_scoring_phase
+  todocs.core._discover_projects → todocs.core._get_default_excludes
+  todocs.core._discover_projects → todocs.core._is_valid_project_dir
+  todocs.core._scan_project_with_progress → todocs.core.scan_project
+  todocs.core.scan_organization → todocs.core._discover_projects
+  todocs.core.scan_organization → todocs.core._scan_project_with_progress
+  todocs.cli.progress.discover_and_show_progress → todocs.core._discover_projects
+  todocs.cli.progress.scan_with_progress → todocs.core.scan_organization
+  todocs.cli.progress.generate_articles_with_progress → todocs.core.generate_articles
+  todocs.cli.progress.generate_with_rich → todocs.cli.progress.discover_and_show_progress
+  todocs.cli.progress.generate_with_rich → todocs.cli.progress.print_project_summary
+  todocs.cli.progress.generate_with_rich → todocs.cli.progress.scan_with_progress
+  todocs.cli.progress.generate_with_rich → todocs.cli.progress.generate_articles_with_progress
+  todocs.cli.progress.generate_without_rich → todocs.core._discover_projects
+  todocs.cli.progress.generate_without_rich → todocs.core.generate_articles
+  todocs.cli.commands.inspect → todocs.core.scan_project
+  todocs.cli.commands.compare → todocs.core.scan_organization
+  todocs.cli.commands.health → todocs.core.scan_organization
+  todocs.cli.commands.readme → todocs.core.scan_organization
+  todocs.cli.commands.status → todocs.core.scan_organization
+  todocs.cli.commands.cards → todocs.core.scan_organization

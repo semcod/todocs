@@ -1,0 +1,48 @@
+# SCENARIO: Auto-generated from Python Tests
+# TYPE: integration
+# GENERATED: true
+
+CONFIG[2]{key, value}:
+  base_url, ${api_url:-http://localhost:8101}
+  timeout_ms, 10000
+
+# Converted 38 assertions from pytest
+ASSERT[38]{field, operator, expected}:
+  eps.sample, ==, "sample.cli:main"
+  len(endpoints), ==, 3
+  result.cli_commands, ==, []
+  result.public_classes, ==, []
+  result.entry_points, ==, {}
+  profile.name, ==, "sample-project"
+  profile.metadata.version, ==, "1.2.3"
+  profile.tech_stack.primary_language, ==, "python"
+  profile.name, ==, "js-app"
+  profile.metadata.version, ==, "2.0.0"
+  profile.tech_stack.primary_language, ==, "javascript"
+  profile.name, ==, "empty-proj"
+  profile.code_stats.source_files, ==, 0
+  len(profiles), ==, CONSTANT_3
+  name, ==, "sample-project"
+  metadata.version, ==, "1.2.3"
+  len(filtered), ==, len(all_profiles) - 1
+  all(p.name, !=, "web-gamma" for p in filtered)
+  generated_by, ==, "todocs v0.1.0"
+  eps.sample, ==, "sample.cli:main"
+  len(endpoints), ==, 3
+  result.cli_commands, ==, []
+  result.public_classes, ==, []
+  result.entry_points, ==, {}
+  profile.name, ==, "sample-project"
+  profile.metadata.version, ==, "1.2.3"
+  profile.tech_stack.primary_language, ==, "python"
+  profile.name, ==, "js-app"
+  profile.metadata.version, ==, "2.0.0"
+  profile.tech_stack.primary_language, ==, "javascript"
+  profile.name, ==, "empty-proj"
+  profile.code_stats.source_files, ==, 0
+  len(profiles), ==, CONSTANT_3
+  name, ==, "sample-project"
+  metadata.version, ==, "1.2.3"
+  len(filtered), ==, len(all_profiles) - 1
+  all(p.name, !=, "web-gamma" for p in filtered)
+  generated_by, ==, "todocs v0.1.0"

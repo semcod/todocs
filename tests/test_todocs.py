@@ -172,7 +172,7 @@ class TestMetadataExtractor:
         meta = ext.extract()
         assert meta.name == "sample-project"
         assert meta.version == "1.2.3"
-        assert meta.description == "A sample project for testing todocs"
+        assert meta.description == "A sample project for testing documentation generation."
         assert meta.license == "MIT"
         assert "sample" in str(meta.entry_points)
 

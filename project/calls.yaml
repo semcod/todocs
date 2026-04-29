@@ -1,0 +1,1039 @@
+project: /home/tom/github/wronai/todocs
+generated_from: code2llm call graph analysis
+stats:
+  total_nodes: 63
+  total_edges: 65
+  modules_count: 17
+nodes:
+  todocs.core.scan_organization:
+    name: scan_organization
+    module: todocs.core
+    line: 294
+    cyclomatic_complexity: 3
+    calls_out: 5
+    calls_in: 10
+  todocs.cli.progress.print_project_summary:
+    name: print_project_summary
+    module: todocs.cli.progress
+    line: 56
+    cyclomatic_complexity: 7
+    calls_out: 10
+    calls_in: 1
+  todocs.cli.progress.scan_with_progress:
+    name: scan_with_progress
+    module: todocs.cli.progress
+    line: 33
+    cyclomatic_complexity: 1
+    calls_out: 10
+    calls_in: 1
+  todocs.cli.progress.generate_without_rich:
+    name: generate_without_rich
+    module: todocs.cli.progress
+    line: 139
+    cyclomatic_complexity: 6
+    calls_out: 20
+    calls_in: 1
+  examples.scan_org.main:
+    name: main
+    module: examples.scan_org
+    line: 14
+    cyclomatic_complexity: 9
+    calls_out: 26
+    calls_in: 0
+  examples.api_surface_deep.main:
+    name: main
+    module: examples.api_surface_deep
+    line: 140
+    cyclomatic_complexity: 3
+    calls_out: 26
+    calls_in: 0
+  todocs.cli.commands.index:
+    name: index
+    module: todocs.cli.commands
+    line: 225
+    cyclomatic_complexity: 2
+    calls_out: 17
+    calls_in: 0
+  todocs.cli.progress.generate_articles_with_progress:
+    name: generate_articles_with_progress
+    module: todocs.cli.progress
+    line: 87
+    cyclomatic_complexity: 1
+    calls_out: 7
+    calls_in: 1
+  todocs.analyzers.api_surface.APISurfaceAnalyzer._should_skip:
+    name: _should_skip
+    module: todocs.analyzers.api_surface
+    line: 45
+    cyclomatic_complexity: 1
+    calls_out: 1
+    calls_in: 0
+  examples.custom_analysis.main:
+    name: main
+    module: examples.custom_analysis
+    line: 169
+    cyclomatic_complexity: 2
+    calls_out: 12
+    calls_in: 0
+  todocs.core._get_default_excludes:
+    name: _get_default_excludes
+    module: todocs.core
+    line: 217
+    cyclomatic_complexity: 1
+    calls_out: 0
+    calls_in: 1
+  todocs.core._run_scoring_phase:
+    name: _run_scoring_phase
+    module: todocs.core
+    line: 184
+    cyclomatic_complexity: 1
+    calls_out: 4
+    calls_in: 1
+  todocs.cli.progress.discover_and_show_progress:
+    name: discover_and_show_progress
+    module: todocs.cli.progress
+    line: 19
+    cyclomatic_complexity: 1
+    calls_out: 8
+    calls_in: 1
+  todocs.generators.article_sections.render_header:
+    name: render_header
+    module: todocs.generators.article_sections
+    line: 45
+    cyclomatic_complexity: 7
+    calls_out: 8
+    calls_in: 4
+  todocs.generators.article_sections.render_dependencies:
+    name: render_dependencies
+    module: todocs.generators.article_sections
+    line: 239
+    cyclomatic_complexity: 8
+    calls_out: 12
+    calls_in: 2
+  todocs.core._discover_projects:
+    name: _discover_projects
+    module: todocs.core
+    line: 246
+    cyclomatic_complexity: 4
+    calls_out: 8
+    calls_in: 3
+  examples.api_surface_deep.print_section:
+    name: print_section
+    module: examples.api_surface_deep
+    line: 17
+    cyclomatic_complexity: 1
+    calls_out: 4
+    calls_in: 5
+  todocs.utils.create_scan_filter:
+    name: create_scan_filter
+    module: todocs.utils
+    line: 105
+    cyclomatic_complexity: 2
+    calls_out: 10
+    calls_in: 1
+  todocs.generators.article_sections.render_frontmatter:
+    name: render_frontmatter
+    module: todocs.generators.article_sections
+    line: 15
+    cyclomatic_complexity: 6
+    calls_out: 5
+    calls_in: 4
+  todocs.generators.article_sections.render_metrics:
+    name: render_metrics
+    module: todocs.generators.article_sections
+    line: 177
+    cyclomatic_complexity: 4
+    calls_out: 19
+    calls_in: 3
+  todocs.generators.article_sections.render_tech_stack:
+    name: render_tech_stack
+    module: todocs.generators.article_sections
+    line: 89
+    cyclomatic_complexity: 8
+    calls_out: 16
+    calls_in: 3
+  todocs.analyzers.code_metrics.CodeMetricsAnalyzer._should_skip:
+    name: _should_skip
+    module: todocs.analyzers.code_metrics
+    line: 43
+    cyclomatic_complexity: 1
+    calls_out: 1
+    calls_in: 0
+  todocs.generators.article_sections.render_architecture:
+    name: render_architecture
+    module: todocs.generators.article_sections
+    line: 118
+    cyclomatic_complexity: 12
+    calls_out: 33
+    calls_in: 2
+  examples.custom_analysis._analyze_docker:
+    name: _analyze_docker
+    module: examples.custom_analysis
+    line: 134
+    cyclomatic_complexity: 7
+    calls_out: 13
+    calls_in: 1
+  todocs.core._run_extraction_phase:
+    name: _run_extraction_phase
+    module: todocs.core
+    line: 125
+    cyclomatic_complexity: 2
+    calls_out: 14
+    calls_in: 1
+  todocs.analyzers.import_graph.ImportGraphAnalyzer._should_skip:
+    name: _should_skip
+    module: todocs.analyzers.import_graph
+    line: 26
+    cyclomatic_complexity: 1
+    calls_out: 1
+    calls_in: 0
+  examples.article_sections_demo.main:
+    name: main
+    module: examples.article_sections_demo
+    line: 31
+    cyclomatic_complexity: 4
+    calls_out: 64
+    calls_in: 0
+  todocs.cli.progress.generate_with_rich:
+    name: generate_with_rich
+    module: todocs.cli.progress
+    line: 103
+    cyclomatic_complexity: 3
+    calls_out: 11
+    calls_in: 1
+  todocs.core.scan_project:
+    name: scan_project
+    module: todocs.core
+    line: 197
+    cyclomatic_complexity: 1
+    calls_out: 5
+    calls_in: 5
+  todocs.cli.commands.compare:
+    name: compare
+    module: todocs.cli.commands
+    line: 94
+    cyclomatic_complexity: 2
+    calls_out: 18
+    calls_in: 0
+  todocs.cli.commands.health:
+    name: health
+    module: todocs.cli.commands
+    line: 120
+    cyclomatic_complexity: 1
+    calls_out: 15
+    calls_in: 0
+  todocs.core._run_analysis_phase:
+    name: _run_analysis_phase
+    module: todocs.core
+    line: 155
+    cyclomatic_complexity: 2
+    calls_out: 13
+    calls_in: 1
+  todocs.generators.article_sections.render_maturity:
+    name: render_maturity
+    module: todocs.generators.article_sections
+    line: 209
+    cyclomatic_complexity: 3
+    calls_out: 6
+    calls_in: 3
+  examples.scan_single.main:
+    name: main
+    module: examples.scan_single
+    line: 19
+    cyclomatic_complexity: 25
+    calls_out: 57
+    calls_in: 0
+  examples.custom_analysis._analyze_import_graph:
+    name: _analyze_import_graph
+    module: examples.custom_analysis
+    line: 31
+    cyclomatic_complexity: 7
+    calls_out: 19
+    calls_in: 1
+  examples.custom_analysis._analyze_code_metrics:
+    name: _analyze_code_metrics
+    module: examples.custom_analysis
+    line: 150
+    cyclomatic_complexity: 3
+    calls_out: 11
+    calls_in: 1
+  examples.api_surface_deep.analyze_symbol_sources:
+    name: analyze_symbol_sources
+    module: examples.api_surface_deep
+    line: 116
+    cyclomatic_complexity: 5
+    calls_out: 13
+    calls_in: 1
+  todocs.generators.article_sections.render_overview:
+    name: render_overview
+    module: todocs.generators.article_sections
+    line: 69
+    cyclomatic_complexity: 6
+    calls_out: 6
+    calls_in: 3
+  todocs.generators.article_sections.render_api_surface:
+    name: render_api_surface
+    module: todocs.generators.article_sections
+    line: 306
+    cyclomatic_complexity: 8
+    calls_out: 14
+    calls_in: 2
+  examples.api_surface_deep.analyze_public_symbols:
+    name: analyze_public_symbols
+    module: examples.api_surface_deep
+    line: 59
+    cyclomatic_complexity: 7
+    calls_out: 24
+    calls_in: 1
+  todocs.cli.commands.status:
+    name: status
+    module: todocs.cli.commands
+    line: 181
+    cyclomatic_complexity: 1
+    calls_out: 15
+    calls_in: 0
+  todocs.analyzers.utils.should_skip:
+    name: should_skip
+    module: todocs.analyzers.utils
+    line: 8
+    cyclomatic_complexity: 4
+    calls_out: 1
+    calls_in: 4
+  examples.organization_health_report.analyze_maturity_distribution:
+    name: analyze_maturity_distribution
+    module: examples.organization_health_report
+    line: 20
+    cyclomatic_complexity: 5
+    calls_out: 6
+    calls_in: 1
+  todocs.cli.commands.export_cmd:
+    name: export_cmd
+    module: todocs.cli.commands
+    line: 267
+    cyclomatic_complexity: 3
+    calls_out: 19
+    calls_in: 0
+  examples.api_surface_deep.analyze_entry_points:
+    name: analyze_entry_points
+    module: examples.api_surface_deep
+    line: 25
+    cyclomatic_complexity: 3
+    calls_out: 5
+    calls_in: 1
+  todocs.generators.article.ArticleGenerator._render_article:
+    name: _render_article
+    module: todocs.generators.article
+    line: 43
+    cyclomatic_complexity: 3
+    calls_out: 15
+    calls_in: 0
+  todocs.core._generate_summary:
+    name: _generate_summary
+    module: todocs.core
+    line: 403
+    cyclomatic_complexity: 12
+    calls_out: 11
+    calls_in: 1
+  examples.organization_health_report.main:
+    name: main
+    module: examples.organization_health_report
+    line: 160
+    cyclomatic_complexity: 4
+    calls_out: 23
+    calls_in: 0
+  todocs.core.generate_articles:
+    name: generate_articles
+    module: todocs.core
+    line: 321
+    cyclomatic_complexity: 6
+    calls_out: 15
+    calls_in: 3
+  examples.api_surface_deep.analyze_cli_commands:
+    name: analyze_cli_commands
+    module: examples.api_surface_deep
+    line: 37
+    cyclomatic_complexity: 7
+    calls_out: 13
+    calls_in: 1
+  examples.custom_analysis._analyze_api_surface:
+    name: _analyze_api_surface
+    module: examples.custom_analysis
+    line: 59
+    cyclomatic_complexity: 10
+    calls_out: 22
+    calls_in: 1
+  todocs.core._scan_project_with_progress:
+    name: _scan_project_with_progress
+    module: todocs.core
+    line: 265
+    cyclomatic_complexity: 3
+    calls_out: 3
+    calls_in: 1
+  examples.organization_health_report.print_health_summary:
+    name: print_health_summary
+    module: examples.organization_health_report
+    line: 97
+    cyclomatic_complexity: 9
+    calls_out: 48
+    calls_in: 1
+  examples.custom_analysis._analyze_toon_files:
+    name: _analyze_toon_files
+    module: examples.custom_analysis
+    line: 93
+    cyclomatic_complexity: 6
+    calls_out: 17
+    calls_in: 1
+  todocs.cli.commands.inspect:
+    name: inspect
+    module: todocs.cli.commands
+    line: 64
+    cyclomatic_complexity: 3
+    calls_out: 17
+    calls_in: 0
+  todocs.analyzers.structure.StructureAnalyzer._should_skip:
+    name: _should_skip
+    module: todocs.analyzers.structure
+    line: 99
+    cyclomatic_complexity: 1
+    calls_out: 1
+    calls_in: 0
+  examples.custom_analysis._print_section_header:
+    name: _print_section_header
+    module: examples.custom_analysis
+    line: 24
+    cyclomatic_complexity: 1
+    calls_out: 3
+    calls_in: 6
+  todocs.core._categorize:
+    name: _categorize
+    module: todocs.core
+    line: 383
+    cyclomatic_complexity: 9
+    calls_out: 7
+    calls_in: 1
+  todocs.cli.commands.cards:
+    name: cards
+    module: todocs.cli.commands
+    line: 203
+    cyclomatic_complexity: 1
+    calls_out: 15
+    calls_in: 0
+  todocs.cli.commands.readme:
+    name: readme
+    module: todocs.cli.commands
+    line: 144
+    cyclomatic_complexity: 4
+    calls_out: 21
+    calls_in: 0
+  examples.api_surface_deep.analyze_rest_endpoints:
+    name: analyze_rest_endpoints
+    module: examples.api_surface_deep
+    line: 93
+    cyclomatic_complexity: 6
+    calls_out: 15
+    calls_in: 1
+  todocs.core._is_valid_project_dir:
+    name: _is_valid_project_dir
+    module: todocs.core
+    line: 225
+    cyclomatic_complexity: 6
+    calls_out: 4
+    calls_in: 1
+  examples.custom_analysis._analyze_makefile:
+    name: _analyze_makefile
+    module: examples.custom_analysis
+    line: 120
+    cyclomatic_complexity: 4
+    calls_out: 6
+    calls_in: 1
+edges:
+- caller: examples.custom_analysis._analyze_import_graph
+  callee: examples.custom_analysis._print_section_header
+  call_type: resolved
+- caller: examples.custom_analysis._analyze_api_surface
+  callee: examples.custom_analysis._print_section_header
+  call_type: resolved
+- caller: examples.custom_analysis._analyze_toon_files
+  callee: examples.custom_analysis._print_section_header
+  call_type: resolved
+- caller: examples.custom_analysis._analyze_makefile
+  callee: examples.custom_analysis._print_section_header
+  call_type: resolved
+- caller: examples.custom_analysis._analyze_docker
+  callee: examples.custom_analysis._print_section_header
+  call_type: resolved
+- caller: examples.custom_analysis._analyze_code_metrics
+  callee: examples.custom_analysis._print_section_header
+  call_type: resolved
+- caller: examples.custom_analysis.main
+  callee: examples.custom_analysis._analyze_import_graph
+  call_type: resolved
+- caller: examples.custom_analysis.main
+  callee: examples.custom_analysis._analyze_api_surface
+  call_type: resolved
+- caller: examples.custom_analysis.main
+  callee: examples.custom_analysis._analyze_toon_files
+  call_type: resolved
+- caller: examples.custom_analysis.main
+  callee: examples.custom_analysis._analyze_makefile
+  call_type: resolved
+- caller: examples.custom_analysis.main
+  callee: examples.custom_analysis._analyze_docker
+  call_type: resolved
+- caller: examples.custom_analysis.main
+  callee: examples.custom_analysis._analyze_code_metrics
+  call_type: resolved
+- caller: examples.organization_health_report.print_health_summary
+  callee: examples.organization_health_report.analyze_maturity_distribution
+  call_type: resolved
+- caller: examples.organization_health_report.main
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: examples.article_sections_demo.main
+  callee: todocs.core.scan_project
+  call_type: resolved
+- caller: examples.scan_single.main
+  callee: todocs.core.scan_project
+  call_type: resolved
+- caller: examples.scan_org.main
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: examples.scan_org.main
+  callee: todocs.core.generate_articles
+  call_type: resolved
+- caller: examples.api_surface_deep.analyze_entry_points
+  callee: examples.api_surface_deep.print_section
+  call_type: resolved
+- caller: examples.api_surface_deep.analyze_cli_commands
+  callee: examples.api_surface_deep.print_section
+  call_type: resolved
+- caller: examples.api_surface_deep.analyze_public_symbols
+  callee: examples.api_surface_deep.print_section
+  call_type: resolved
+- caller: examples.api_surface_deep.analyze_rest_endpoints
+  callee: examples.api_surface_deep.print_section
+  call_type: resolved
+- caller: examples.api_surface_deep.analyze_symbol_sources
+  callee: examples.api_surface_deep.print_section
+  call_type: resolved
+- caller: examples.api_surface_deep.main
+  callee: examples.api_surface_deep.analyze_entry_points
+  call_type: resolved
+- caller: todocs.core._run_scoring_phase
+  callee: todocs.core._categorize
+  call_type: resolved
+- caller: todocs.core._run_scoring_phase
+  callee: todocs.core._generate_summary
+  call_type: resolved
+- caller: todocs.core.scan_project
+  callee: todocs.utils.create_scan_filter
+  call_type: resolved
+- caller: todocs.core.scan_project
+  callee: todocs.core._run_extraction_phase
+  call_type: resolved
+- caller: todocs.core.scan_project
+  callee: todocs.core._run_analysis_phase
+  call_type: resolved
+- caller: todocs.core.scan_project
+  callee: todocs.core._run_scoring_phase
+  call_type: resolved
+- caller: todocs.core._discover_projects
+  callee: todocs.core._get_default_excludes
+  call_type: resolved
+- caller: todocs.core._discover_projects
+  callee: todocs.core._is_valid_project_dir
+  call_type: resolved
+- caller: todocs.core._scan_project_with_progress
+  callee: todocs.core.scan_project
+  call_type: resolved
+- caller: todocs.core.scan_organization
+  callee: todocs.core._discover_projects
+  call_type: resolved
+- caller: todocs.core.scan_organization
+  callee: todocs.core._scan_project_with_progress
+  call_type: resolved
+- caller: todocs.cli.progress.discover_and_show_progress
+  callee: todocs.core._discover_projects
+  call_type: resolved
+- caller: todocs.cli.progress.scan_with_progress
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: todocs.cli.progress.generate_articles_with_progress
+  callee: todocs.core.generate_articles
+  call_type: resolved
+- caller: todocs.cli.progress.generate_with_rich
+  callee: todocs.cli.progress.discover_and_show_progress
+  call_type: resolved
+- caller: todocs.cli.progress.generate_with_rich
+  callee: todocs.cli.progress.print_project_summary
+  call_type: resolved
+- caller: todocs.cli.progress.generate_with_rich
+  callee: todocs.cli.progress.scan_with_progress
+  call_type: resolved
+- caller: todocs.cli.progress.generate_with_rich
+  callee: todocs.cli.progress.generate_articles_with_progress
+  call_type: resolved
+- caller: todocs.cli.progress.generate_without_rich
+  callee: todocs.core._discover_projects
+  call_type: resolved
+- caller: todocs.cli.progress.generate_without_rich
+  callee: todocs.core.generate_articles
+  call_type: resolved
+- caller: todocs.cli.commands.inspect
+  callee: todocs.core.scan_project
+  call_type: resolved
+- caller: todocs.cli.commands.compare
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: todocs.cli.commands.health
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: todocs.cli.commands.readme
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: todocs.cli.commands.status
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: todocs.cli.commands.cards
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: todocs.cli.commands.index
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: todocs.cli.commands.export_cmd
+  callee: todocs.core.scan_organization
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_frontmatter
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_header
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_overview
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_tech_stack
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_architecture
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_metrics
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_maturity
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_dependencies
+  call_type: resolved
+- caller: todocs.generators.article.ArticleGenerator._render_article
+  callee: todocs.generators.article_sections.render_api_surface
+  call_type: resolved
+- caller: todocs.analyzers.structure.StructureAnalyzer._should_skip
+  callee: todocs.analyzers.utils.should_skip
+  call_type: resolved
+- caller: todocs.analyzers.import_graph.ImportGraphAnalyzer._should_skip
+  callee: todocs.analyzers.utils.should_skip
+  call_type: resolved
+- caller: todocs.analyzers.code_metrics.CodeMetricsAnalyzer._should_skip
+  callee: todocs.analyzers.utils.should_skip
+  call_type: resolved
+- caller: todocs.analyzers.api_surface.APISurfaceAnalyzer._should_skip
+  callee: todocs.analyzers.utils.should_skip
+  call_type: resolved
+modules:
+  examples.api_surface_deep:
+  - examples.api_surface_deep.analyze_cli_commands
+  - examples.api_surface_deep.analyze_entry_points
+  - examples.api_surface_deep.analyze_public_symbols
+  - examples.api_surface_deep.analyze_rest_endpoints
+  - examples.api_surface_deep.analyze_symbol_sources
+  - examples.api_surface_deep.main
+  - examples.api_surface_deep.print_section
+  examples.article_sections_demo:
+  - examples.article_sections_demo.main
+  examples.custom_analysis:
+  - examples.custom_analysis._analyze_api_surface
+  - examples.custom_analysis._analyze_code_metrics
+  - examples.custom_analysis._analyze_docker
+  - examples.custom_analysis._analyze_import_graph
+  - examples.custom_analysis._analyze_makefile
+  - examples.custom_analysis._analyze_toon_files
+  - examples.custom_analysis._print_section_header
+  - examples.custom_analysis.main
+  examples.organization_health_report:
+  - examples.organization_health_report.analyze_maturity_distribution
+  - examples.organization_health_report.main
+  - examples.organization_health_report.print_health_summary
+  examples.scan_org:
+  - examples.scan_org.main
+  examples.scan_single:
+  - examples.scan_single.main
+  todocs.analyzers.api_surface:
+  - todocs.analyzers.api_surface.APISurfaceAnalyzer._should_skip
+  todocs.analyzers.code_metrics:
+  - todocs.analyzers.code_metrics.CodeMetricsAnalyzer._should_skip
+  todocs.analyzers.import_graph:
+  - todocs.analyzers.import_graph.ImportGraphAnalyzer._should_skip
+  todocs.analyzers.structure:
+  - todocs.analyzers.structure.StructureAnalyzer._should_skip
+  todocs.analyzers.utils:
+  - todocs.analyzers.utils.should_skip
+  todocs.cli.commands:
+  - todocs.cli.commands.cards
+  - todocs.cli.commands.compare
+  - todocs.cli.commands.export_cmd
+  - todocs.cli.commands.health
+  - todocs.cli.commands.index
+  - todocs.cli.commands.inspect
+  - todocs.cli.commands.readme
+  - todocs.cli.commands.status
+  todocs.cli.progress:
+  - todocs.cli.progress.discover_and_show_progress
+  - todocs.cli.progress.generate_articles_with_progress
+  - todocs.cli.progress.generate_with_rich
+  - todocs.cli.progress.generate_without_rich
+  - todocs.cli.progress.print_project_summary
+  - todocs.cli.progress.scan_with_progress
+  todocs.core:
+  - todocs.core._categorize
+  - todocs.core._discover_projects
+  - todocs.core._generate_summary
+  - todocs.core._get_default_excludes
+  - todocs.core._is_valid_project_dir
+  - todocs.core._run_analysis_phase
+  - todocs.core._run_extraction_phase
+  - todocs.core._run_scoring_phase
+  - todocs.core._scan_project_with_progress
+  - todocs.core.generate_articles
+  - todocs.core.scan_organization
+  - todocs.core.scan_project
+  todocs.generators.article:
+  - todocs.generators.article.ArticleGenerator._render_article
+  todocs.generators.article_sections:
+  - todocs.generators.article_sections.render_api_surface
+  - todocs.generators.article_sections.render_architecture
+  - todocs.generators.article_sections.render_dependencies
+  - todocs.generators.article_sections.render_frontmatter
+  - todocs.generators.article_sections.render_header
+  - todocs.generators.article_sections.render_maturity
+  - todocs.generators.article_sections.render_metrics
+  - todocs.generators.article_sections.render_overview
+  - todocs.generators.article_sections.render_tech_stack
+  todocs.utils:
+  - todocs.utils.create_scan_filter
+entry_points:
+- examples.api_surface_deep.main
+- examples.article_sections_demo.main
+- examples.custom_analysis.main
+- examples.organization_health_report.main
+- examples.scan_org.main
+- examples.scan_single.main
+- project.map.toon._analyze_api_surface
+- project.map.toon._analyze_code_metrics
+- project.map.toon._analyze_docker
+- project.map.toon._analyze_import_graph
+- project.map.toon._analyze_makefile
+- project.map.toon._analyze_toon_files
+- project.map.toon._categorize
+- project.map.toon._discover_projects
+- project.map.toon._generate_summary
+- project.map.toon._get_default_excludes
+- project.map.toon._is_valid_project_dir
+- project.map.toon._print_section_header
+- project.map.toon._render_cli_commands
+- project.map.toon._render_entry_points
+- project.map.toon._render_public_classes
+- project.map.toon._render_rest_endpoints
+- project.map.toon._run_analysis_phase
+- project.map.toon._run_extraction_phase
+- project.map.toon._run_scoring_phase
+- project.map.toon._scan_project_with_progress
+- project.map.toon._write_html_export
+- project.map.toon._write_json_export
+- project.map.toon.analyze_cli_commands
+- project.map.toon.analyze_code_metrics
+- project.map.toon.analyze_entry_points
+- project.map.toon.analyze_maturity_distribution
+- project.map.toon.analyze_public_symbols
+- project.map.toon.analyze_rest_endpoints
+- project.map.toon.analyze_symbol_sources
+- project.map.toon.analyze_tech_stacks
+- project.map.toon.cards
+- project.map.toon.compare
+- project.map.toon.create_scan_filter
+- project.map.toon.detect_org_from_git
+- project.map.toon.discover_and_show_progress
+- project.map.toon.empty_project
+- project.map.toon.export_cmd
+- project.map.toon.find_critical_projects
+- project.map.toon.generate
+- project.map.toon.generate_articles
+- project.map.toon.generate_articles_with_progress
+- project.map.toon.generate_with_rich
+- project.map.toon.generate_without_rich
+- project.map.toon.health
+- project.map.toon.index
+- project.map.toon.inspect
+- project.map.toon.js_project
+- project.map.toon.main
+- project.map.toon.multi_org
+- project.map.toon.print_health_summary
+- project.map.toon.print_project_summary
+- project.map.toon.print_section
+- project.map.toon.readme
+- project.map.toon.render_api_surface
+- project.map.toon.render_architecture
+- project.map.toon.render_build_targets
+- project.map.toon.render_changelog
+- project.map.toon.render_dependencies
+- project.map.toon.render_docker
+- project.map.toon.render_footer
+- project.map.toon.render_frontmatter
+- project.map.toon.render_header
+- project.map.toon.render_maturity
+- project.map.toon.render_metrics
+- project.map.toon.render_overview
+- project.map.toon.render_tech_stack
+- project.map.toon.render_usage
+- project.map.toon.sample_organization
+- project.map.toon.sample_project
+- project.map.toon.scan_organization
+- project.map.toon.scan_project
+- project.map.toon.scan_with_progress
+- project.map.toon.should_skip
+- project.map.toon.status
+- project.map.toon.write_json_report
+- testql-scenarios.generated-from-pytests.testql.toon.all
+- todocs.analyzers.api_surface.APISurfaceAnalyzer.__init__
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._collect_target_files
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._decorator_name
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._detect_cli_commands
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._detect_entry_points
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._detect_rest_endpoints
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._extract_all
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._extract_class
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._extract_from_file
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._extract_function
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._scan_public_symbols
+- todocs.analyzers.api_surface.APISurfaceAnalyzer._should_skip
+- todocs.analyzers.api_surface.APISurfaceAnalyzer.analyze
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer.__init__
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._ast_complexity
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._collect_ast_fallback
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._collect_complexity_data
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._collect_radon_metrics
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._count_lines
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._extract_imports
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._extract_module_docstring
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._extract_module_info
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._is_test
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._parse_module_ast
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._scan
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer._should_skip
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer.analyze
+- todocs.analyzers.code_metrics.CodeMetricsAnalyzer.get_key_modules
+- todocs.analyzers.dependencies.DependencyAnalyzer.__init__
+- todocs.analyzers.dependencies.DependencyAnalyzer._deduplicate
+- todocs.analyzers.dependencies.DependencyAnalyzer._deps_from_package_json
+- todocs.analyzers.dependencies.DependencyAnalyzer._deps_from_requirements
+- todocs.analyzers.dependencies.DependencyAnalyzer._load_pyproject
+- todocs.analyzers.dependencies.DependencyAnalyzer._parse_dep_name
+- todocs.analyzers.dependencies.DependencyAnalyzer._pyproject_dev_deps
+- todocs.analyzers.dependencies.DependencyAnalyzer._pyproject_runtime_deps
+- todocs.analyzers.dependencies.DependencyAnalyzer.get_dev_deps
+- todocs.analyzers.dependencies.DependencyAnalyzer.get_runtime_deps
+- todocs.analyzers.import_graph.ImportGraphAnalyzer.__init__
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._build_fan_metrics
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._build_import_edges
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._collect_modules
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._detect_cycles
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._detect_internal_packages
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._iter_py_files
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._module_name
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._parse_file_imports
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._resolve_relative_import
+- todocs.analyzers.import_graph.ImportGraphAnalyzer._should_skip
+- todocs.analyzers.import_graph.ImportGraphAnalyzer.build_graph
+- todocs.analyzers.import_graph.ImportGraphAnalyzer.get_hub_modules
+- todocs.analyzers.maturity.MaturityScorer.__init__
+- todocs.analyzers.maturity.MaturityScorer.score
+- todocs.analyzers.structure.StructureAnalyzer.__init__
+- todocs.analyzers.structure.StructureAnalyzer._detect_build_tools
+- todocs.analyzers.structure.StructureAnalyzer._detect_ci_cd
+- todocs.analyzers.structure.StructureAnalyzer._detect_containers
+- todocs.analyzers.structure.StructureAnalyzer._detect_frameworks
+- todocs.analyzers.structure.StructureAnalyzer._detect_languages
+- todocs.analyzers.structure.StructureAnalyzer._detect_test_frameworks
+- todocs.analyzers.structure.StructureAnalyzer._iter_files
+- todocs.analyzers.structure.StructureAnalyzer._read_deps_text
+- todocs.analyzers.structure.StructureAnalyzer._should_skip
+- todocs.analyzers.structure.StructureAnalyzer.analyze
+- todocs.analyzers.structure.StructureAnalyzer.detect_tech_stack
+- todocs.cli.commands._write_html_export
+- todocs.cli.commands._write_json_export
+- todocs.cli.commands.cards
+- todocs.cli.commands.compare
+- todocs.cli.commands.export_cmd
+- todocs.cli.commands.generate
+- todocs.cli.commands.health
+- todocs.cli.commands.index
+- todocs.cli.commands.inspect
+- todocs.cli.commands.readme
+- todocs.cli.commands.status
+- todocs.cli.main
+- todocs.core.ProjectProfile.to_dict
+- todocs.core.ProjectProfile.to_json
+- todocs.extractors.changelog_parser.ChangelogParser.__init__
+- todocs.extractors.changelog_parser.ChangelogParser._find_changelog
+- todocs.extractors.changelog_parser.ChangelogParser._parse_entries
+- todocs.extractors.changelog_parser.ChangelogParser._summarize_entry
+- todocs.extractors.changelog_parser.ChangelogParser.parse
+- todocs.extractors.docker_parser.DockerParser.__init__
+- todocs.extractors.docker_parser.DockerParser._clean_image_name
+- todocs.extractors.docker_parser.DockerParser._extract_cmd
+- todocs.extractors.docker_parser.DockerParser._extract_entrypoint
+- todocs.extractors.docker_parser.DockerParser._extract_exposed_ports
+- todocs.extractors.docker_parser.DockerParser._extract_from_images
+- todocs.extractors.docker_parser.DockerParser._find_compose_files
+- todocs.extractors.docker_parser.DockerParser._find_dockerfiles
+- todocs.extractors.docker_parser.DockerParser._iter_instructions
+- todocs.extractors.docker_parser.DockerParser._parse_compose
+- todocs.extractors.docker_parser.DockerParser._parse_dockerfile
+- todocs.extractors.docker_parser.DockerParser._read_dockerfile
+- todocs.extractors.docker_parser.DockerParser.parse
+- todocs.extractors.makefile_parser.MakefileParser.__init__
+- todocs.extractors.makefile_parser.MakefileParser._collect_commands
+- todocs.extractors.makefile_parser.MakefileParser._collect_phony_targets
+- todocs.extractors.makefile_parser.MakefileParser._extract_help_text
+- todocs.extractors.makefile_parser.MakefileParser._parse_makefile
+- todocs.extractors.makefile_parser.MakefileParser._parse_target_line
+- todocs.extractors.makefile_parser.MakefileParser._parse_taskfile
+- todocs.extractors.makefile_parser.MakefileParser.get_target_names
+- todocs.extractors.makefile_parser.MakefileParser.parse
+- todocs.extractors.metadata.MetadataExtractor.__init__
+- todocs.extractors.metadata.MetadataExtractor._extract_license
+- todocs.extractors.metadata.MetadataExtractor._extract_setup_kwargs
+- todocs.extractors.metadata.MetadataExtractor._from_package_json
+- todocs.extractors.metadata.MetadataExtractor._from_pyproject
+- todocs.extractors.metadata.MetadataExtractor._from_setup_cfg
+- todocs.extractors.metadata.MetadataExtractor._from_setup_py
+- todocs.extractors.metadata.MetadataExtractor._merge
+- todocs.extractors.metadata.MetadataExtractor.extract
+- todocs.extractors.readme_parser.ReadmeParser.__init__
+- todocs.extractors.readme_parser.ReadmeParser._check_nltk
+- todocs.extractors.readme_parser.ReadmeParser._extract_after_h2
+- todocs.extractors.readme_parser.ReadmeParser._extract_description
+- todocs.extractors.readme_parser.ReadmeParser._extract_heading_sections
+- todocs.extractors.readme_parser.ReadmeParser._extract_post_h1
+- todocs.extractors.readme_parser.ReadmeParser._extract_preamble
+- todocs.extractors.readme_parser.ReadmeParser._find_readme
+- todocs.extractors.readme_parser.ReadmeParser._parse_sections
+- todocs.extractors.readme_parser.ReadmeParser._summarize_with_nlp
+- todocs.extractors.readme_parser.ReadmeParser.extract_key_features
+- todocs.extractors.readme_parser.ReadmeParser.get_first_paragraph
+- todocs.extractors.readme_parser.ReadmeParser.parse
+- todocs.extractors.toon_parser.ToonParser.__init__
+- todocs.extractors.toon_parser.ToonParser._parse_analysis_header
+- todocs.extractors.toon_parser.ToonParser._parse_class_line
+- todocs.extractors.toon_parser.ToonParser._parse_details_section
+- todocs.extractors.toon_parser.ToonParser._parse_function_line
+- todocs.extractors.toon_parser.ToonParser._parse_health_section
+- todocs.extractors.toon_parser.ToonParser._parse_layers_section
+- todocs.extractors.toon_parser.ToonParser._parse_map_header
+- todocs.extractors.toon_parser.ToonParser._parse_modules_section
+- todocs.extractors.toon_parser.ToonParser._parse_refactor_section
+- todocs.extractors.toon_parser.ToonParser._read
+- todocs.extractors.toon_parser.ToonParser.find_toon_files
+- todocs.extractors.toon_parser.ToonParser.parse_all
+- todocs.extractors.toon_parser.ToonParser.parse_analysis
+- todocs.extractors.toon_parser.ToonParser.parse_flow
+- todocs.extractors.toon_parser.ToonParser.parse_functions
+- todocs.extractors.toon_parser.ToonParser.parse_map
+- todocs.formatters.table_formatter.TableFormatter._default_columns
+- todocs.formatters.table_formatter.TableFormatter._default_features
+- todocs.formatters.table_formatter.TableFormatter._render_table
+- todocs.formatters.table_formatter.TableFormatter._sort_profiles
+- todocs.formatters.table_formatter.TableFormatter.format_comparison
+- todocs.formatters.table_formatter.TableFormatter.format_matrix
+- todocs.formatters.table_formatter.TableFormatter.format_ranking
+- todocs.generators.article.ArticleGenerator._render_article
+- todocs.generators.article.ArticleGenerator._render_index
+- todocs.generators.article.ArticleGenerator.generate
+- todocs.generators.article.ArticleGenerator.generate_index
+- todocs.generators.base.BaseGenerator.__init__
+- todocs.generators.comparison.ComparisonGenerator._complexity_comparison
+- todocs.generators.comparison.ComparisonGenerator._dependency_overlap
+- todocs.generators.comparison.ComparisonGenerator._footer
+- todocs.generators.comparison.ComparisonGenerator._health_executive_summary
+- todocs.generators.comparison.ComparisonGenerator._health_grade_distribution
+- todocs.generators.comparison.ComparisonGenerator._health_projects_needing_attention
+- todocs.generators.comparison.ComparisonGenerator._health_top_performers
+- todocs.generators.comparison.ComparisonGenerator._maturity_leaderboard
+- todocs.generators.comparison.ComparisonGenerator._missing_features
+- todocs.generators.comparison.ComparisonGenerator._project_features
+- todocs.generators.comparison.ComparisonGenerator._readme_project_section
+- todocs.generators.comparison.ComparisonGenerator._readme_summary_table
+- todocs.generators.comparison.ComparisonGenerator._render_category
+- todocs.generators.comparison.ComparisonGenerator._render_comparison
+- todocs.generators.comparison.ComparisonGenerator._render_health_report
+- todocs.generators.comparison.ComparisonGenerator._render_readme_list
+- todocs.generators.comparison.ComparisonGenerator._size_comparison
+- todocs.generators.comparison.ComparisonGenerator._tech_stack_overview
+- todocs.generators.comparison.ComparisonGenerator.generate_category_articles
+- todocs.generators.comparison.ComparisonGenerator.generate_comparison
+- todocs.generators.comparison.ComparisonGenerator.generate_health_report
+- todocs.generators.comparison.ComparisonGenerator.generate_readme_list
+- todocs.generators.org_index_gen.OrgIndexGenerator._alphabetical_index
+- todocs.generators.org_index_gen.OrgIndexGenerator._category_sections
+- todocs.generators.org_index_gen.OrgIndexGenerator._footer
+- todocs.generators.org_index_gen.OrgIndexGenerator._frontmatter
+- todocs.generators.org_index_gen.OrgIndexGenerator._header
+- todocs.generators.org_index_gen.OrgIndexGenerator._quick_stats
+- todocs.generators.org_index_gen.OrgIndexGenerator.generate
+- todocs.generators.org_index_gen.OrgIndexGenerator.render
+- todocs.generators.project_card_gen.ProjectCardGenerator._badge_line
+- todocs.generators.project_card_gen.ProjectCardGenerator._deps_line
+- todocs.generators.project_card_gen.ProjectCardGenerator._description
+- todocs.generators.project_card_gen.ProjectCardGenerator._features_line
+- todocs.generators.project_card_gen.ProjectCardGenerator._footer
+- todocs.generators.project_card_gen.ProjectCardGenerator._frontmatter
+- todocs.generators.project_card_gen.ProjectCardGenerator._stats_table
+- todocs.generators.project_card_gen.ProjectCardGenerator.generate
+- todocs.generators.project_card_gen.ProjectCardGenerator.generate_all
+- todocs.generators.project_card_gen.ProjectCardGenerator.render_card
+- todocs.generators.status_report_gen.StatusReportGenerator._footer
+- todocs.generators.status_report_gen.StatusReportGenerator._frontmatter
+- todocs.generators.status_report_gen.StatusReportGenerator._grade_breakdown
+- todocs.generators.status_report_gen.StatusReportGenerator._header
+- todocs.generators.status_report_gen.StatusReportGenerator._kpi_dashboard
+- todocs.generators.status_report_gen.StatusReportGenerator._language_distribution
+- todocs.generators.status_report_gen.StatusReportGenerator._largest_projects
+- todocs.generators.status_report_gen.StatusReportGenerator._quality_gaps
+- todocs.generators.status_report_gen.StatusReportGenerator._recent_activity
+- todocs.generators.status_report_gen.StatusReportGenerator._recommendations
+- todocs.generators.status_report_gen.StatusReportGenerator._truncated_names
+- todocs.generators.status_report_gen.StatusReportGenerator.generate
+- todocs.generators.status_report_gen.StatusReportGenerator.render
+- todocs.outputs.html.HTMLOutput._render_card
+- todocs.outputs.html.HTMLOutput._render_row
+- todocs.outputs.html.HTMLOutput.render
+- todocs.outputs.html.HTMLOutput.write
+- todocs.outputs.json.JSONOutput._meta
+- todocs.outputs.json.JSONOutput._project_entry
+- todocs.outputs.json.JSONOutput._summary
+- todocs.outputs.json.JSONOutput.render
+- todocs.outputs.json.JSONOutput.write
+- todocs.outputs.markdown.MarkdownOutput.__init__
+- todocs.outputs.markdown.MarkdownOutput._write_articles
+- todocs.outputs.markdown.MarkdownOutput._write_cards
+- todocs.outputs.markdown.MarkdownOutput._write_comparison_reports
+- todocs.outputs.markdown.MarkdownOutput._write_index
+- todocs.outputs.markdown.MarkdownOutput._write_status_report
+- todocs.outputs.markdown.MarkdownOutput.write_all
+- todocs.utils.GitignoreParser.__init__
+- todocs.utils.GitignoreParser._load_gitignore
+- todocs.utils.GitignoreParser._match_pattern
+- todocs.utils.GitignoreParser._parse_patterns
+- todocs.utils.GitignoreParser.is_ignored

@@ -1,0 +1,80 @@
+// LESS format — define @variables here as needed
+
+app {
+  name: todocs;
+  version: 0.1.11;
+}
+
+dependencies {
+  runtime: "tomli>=2.0; python_version<'3.11', pyyaml>=6.0, jinja2>=3.1, radon>=6.0, rich>=13.0, click>=8.1";
+  dev: "pytest>=7.0, pytest-cov, black, ruff";
+}
+
+interface[type="api"] {
+  type: rest;
+  framework: fastapi;
+}
+
+interface[type="cli"] {
+  framework: click;
+}
+interface[type="cli"] page[name="todocs"] {
+
+}
+
+workflow[name="install"] {
+  trigger: manual;
+  step-1: run cmd=pip install -e .;
+}
+
+workflow[name="dev"] {
+  trigger: manual;
+  step-1: run cmd=pip install -e ".[dev]";
+}
+
+workflow[name="test"] {
+  trigger: manual;
+  step-1: run cmd=python -m pytest tests/ -v;
+}
+
+workflow[name="test-cov"] {
+  trigger: manual;
+  step-1: run cmd=python -m pytest tests/ -v --cov=todocs --cov-report=term-missing;
+}
+
+workflow[name="lint"] {
+  trigger: manual;
+  step-1: run cmd=ruff check todocs/ tests/;
+}
+
+workflow[name="format"] {
+  trigger: manual;
+  step-1: run cmd=black todocs/ tests/;
+  step-2: run cmd=ruff check --fix todocs/ tests/;
+}
+
+workflow[name="clean"] {
+  trigger: manual;
+  step-1: run cmd=rm -rf dist/ build/ *.egg-info todocs/*.egg-info;
+  step-2: run cmd=find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true;
+  step-3: run cmd=find . -type f -name "*.pyc" -delete;
+}
+
+workflow[name="build"] {
+  trigger: manual;
+  step-1: run cmd=python -m build;
+}
+
+workflow[name="publish"] {
+  trigger: manual;
+  step-1: run cmd=python -m twine upload dist/*;
+}
+
+deploy {
+  target: makefile;
+}
+
+environment[name="local"] {
+  runtime: docker-compose;
+  python_version: >=3.10;
+}

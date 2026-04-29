@@ -214,6 +214,35 @@ def scan_project(project_path: Path, max_depth: int = MAX_3) -> ProjectProfile:
     return profile
 
 
+def _get_default_excludes() -> set:
+    """Get default directory names to exclude from scanning."""
+    return {
+        "venv", ".venv", "node_modules", "__pycache__", ".git",
+        "sandbox", "comparison_output", "recordings",
+    }
+
+
+def _is_valid_project_dir(child: Path, exclude: set) -> bool:
+    """Check if a directory looks like a valid project.
+
+    Args:
+        child: Directory path to check
+        exclude: Set of directory names to exclude
+
+    Returns:
+        True if the directory appears to be a valid project
+    """
+    if not child.is_dir():
+        return False
+    if child.name.startswith(".") or child.name in exclude:
+        return False
+    # Heuristic: a project directory has README.md or pyproject.toml or Makefile
+    markers = {"README.md", "pyproject.toml", "setup.py", "Makefile", "package.json", "Cargo.toml"}
+    if not any((child / m).exists() for m in markers):
+        return False
+    return True
+
+
 def _discover_projects(root_path: Path, exclude: Optional[List[str]] = None) -> List[Path]:
     """Discover project directories without scanning them.
 
@@ -221,27 +250,45 @@ def _discover_projects(root_path: Path, exclude: Optional[List[str]] = None) -> 
     (have README.md, pyproject.toml, etc.)
     """
     exclude = set(exclude or [])
-    exclude.update({
-        "venv", ".venv", "node_modules", "__pycache__", ".git",
-        "sandbox", "comparison_output", "recordings",
-    })
+    exclude.update(_get_default_excludes())
 
     project_dirs = []
     root = Path(root_path)
 
     for child in sorted(root.iterdir()):
-        if not child.is_dir():
-            continue
-        if child.name.startswith(".") or child.name in exclude:
-            continue
-        # Heuristic: a project directory has README.md or pyproject.toml or Makefile
-        markers = {"README.md", "pyproject.toml", "setup.py", "Makefile", "package.json", "Cargo.toml"}
-        if not any((child / m).exists() for m in markers):
-            continue
-
-        project_dirs.append(child)
+        if _is_valid_project_dir(child, exclude):
+            project_dirs.append(child)
 
     return project_dirs
+
+
+def _scan_project_with_progress(
+    project_dir: Path,
+    idx: int,
+    total: int,
+    max_depth: int,
+    progress_callback = None
+) -> Optional[ProjectProfile]:
+    """Scan a single project with optional progress callback.
+
+    Args:
+        project_dir: Directory path to scan
+        idx: Current project index
+        total: Total number of projects
+        max_depth: Maximum directory depth to scan
+        progress_callback: Optional callback function
+
+    Returns:
+        ProjectProfile if successful, None otherwise
+    """
+    if progress_callback:
+        progress_callback(project_dir.name, idx, total)
+
+    try:
+        return scan_project(project_dir, max_depth=max_depth)
+    except Exception as e:
+        print(f"[WARN] Failed to analyze {project_dir.name}: {e}")
+        return None
 
 
 def scan_organization(
@@ -258,40 +305,15 @@ def scan_organization(
         max_depth: Maximum directory depth to scan within each project
         progress_callback: Optional callback(project_name, index, total) called for each project
     """
-    exclude = set(exclude or [])
-    exclude.update({
-        "venv", ".venv", "node_modules", "__pycache__", ".git",
-        "sandbox", "comparison_output", "recordings",
-    })
+    project_dirs = _discover_projects(root_path, exclude)
 
     profiles = []
-    root = Path(root_path)
-
-    # Collect project directories first
-    project_dirs = []
-    for child in sorted(root.iterdir()):
-        if not child.is_dir():
-            continue
-        if child.name.startswith(".") or child.name in exclude:
-            continue
-        # Heuristic: a project directory has README.md or pyproject.toml or Makefile
-        markers = {"README.md", "pyproject.toml", "setup.py", "Makefile", "package.json", "Cargo.toml"}
-        if not any((child / m).exists() for m in markers):
-            continue
-
-        project_dirs.append(child)
-
-    # Scan each project with progress callback
-    total = len(project_dirs)
-    for idx, child in enumerate(project_dirs, 1):
-        if progress_callback:
-            progress_callback(child.name, idx, total)
-
-        try:
-            profile = scan_project(child, max_depth=max_depth)
+    for idx, project_dir in enumerate(project_dirs, 1):
+        profile = _scan_project_with_progress(
+            project_dir, idx, len(project_dirs), max_depth, progress_callback
+        )
+        if profile:
             profiles.append(profile)
-        except Exception as e:
-            print(f"[WARN] Failed to analyze {child.name}: {e}")
 
     return profiles
 
@@ -379,21 +401,36 @@ def _categorize(profile: ProjectProfile) -> str:
 
 
 def _generate_summary(profile: ProjectProfile) -> str:
-    """Generate a summary sentence from available data without LLM."""
+    """Generate a summary sentence from available data using NLP-enhanced README extraction."""
     meta = profile.metadata
     stats = profile.code_stats
     mat = profile.maturity
 
     name = meta.name or profile.name
-    desc = meta.description or ""
     lang = profile.tech_stack.primary_language.capitalize()
 
-    if desc:
+    # Try to get enhanced description from README parser
+    readme_desc = profile.readme_sections.get("description", "")
+    features = profile.readme_sections.get("features", "")
+
+    # Build description with NLP-extracted information
+    if readme_desc and len(readme_desc) > 20:
+        # Use NLP-summarized description from README
+        desc = readme_desc[:500]  # Limit to reasonable length for summary
         base = f"{name} — {desc}"
+    elif meta.description:
+        base = f"{name} — {meta.description}"
     else:
         base = f"{name} is a {lang} project"
 
     parts = [base]
+
+    # Add key features if available from README
+    if features and len(features) > 50:
+        # Extract first few sentences from features
+        feature_sentences = features.split(". ")
+        if feature_sentences:
+            parts.append(f"Key features: {feature_sentences[0]}")
 
     if stats.source_files > 0:
         parts.append(f"comprising {stats.source_files} source files ({stats.source_lines:,} lines)")
@@ -404,4 +441,4 @@ def _generate_summary(profile: ProjectProfile) -> str:
     if mat.grade:
         parts.append(f"at maturity grade {mat.grade}")
 
-    return ", ".join(parts) + "."
+    return ". ".join(parts) + "."

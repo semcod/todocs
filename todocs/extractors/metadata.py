@@ -26,6 +26,7 @@ class MetadataExtractor:
 
     def extract(self):
         from todocs.core import ProjectMetadata
+        from todocs.extractors.readme_parser import ReadmeParser
 
         meta = ProjectMetadata(name=self.root.name)
 
@@ -58,6 +59,13 @@ class MetadataExtractor:
         # Infer repo URL from project name if not set
         if not meta.repository:
             meta.repository = f"https://github.com/wronai/{meta.name}"
+
+        # Enhance description from README if current description is too short
+        if not meta.description or len(meta.description) < 50:
+            readme_parser = ReadmeParser(self.root)
+            readme_desc = readme_parser.get_first_paragraph()
+            if readme_desc and len(readme_desc) > 20:
+                meta.description = readme_desc
 
         return meta
 
