@@ -23,7 +23,7 @@ from .commands import (
     export_cmd,
 )
 
-__version__ = "0.1.12"
+__version__ = "0.1.13"
 
 
 @click.group()
