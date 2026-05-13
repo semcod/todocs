@@ -79,12 +79,14 @@ def find_critical_projects(profiles: list, threshold: int = 40) -> list:
     critical = []
     for p in profiles:
         if p.maturity.score < threshold:
-            critical.append({
-                "name": p.name,
-                "score": p.maturity.score,
-                "grade": p.maturity.grade,
-                "issues": [],
-            })
+            critical.append(
+                {
+                    "name": p.name,
+                    "score": p.maturity.score,
+                    "grade": p.maturity.grade,
+                    "issues": [],
+                }
+            )
             if not p.maturity.has_tests:
                 critical[-1]["issues"].append("No tests")
             if not p.maturity.has_ci:
@@ -158,9 +160,7 @@ def print_health_summary(profiles: list, org_name: str) -> None:
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Generate organization health report"
-    )
+    parser = argparse.ArgumentParser(description="Generate organization health report")
     parser.add_argument("root_dir", help="Root directory containing project subdirectories")
     parser.add_argument("-o", "--output", help="Output file path (default: print to stdout)")
     parser.add_argument("--org-name", default="Organization", help="Organization name")

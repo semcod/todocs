@@ -8,12 +8,10 @@ Usage:
     python examples/custom_analysis.py /path/to/project
 """
 
-import json
 import sys
 from pathlib import Path
 
 from todocs.analyzers.code_metrics import CodeMetricsAnalyzer
-from todocs.analyzers.structure import StructureAnalyzer
 from todocs.analyzers.import_graph import ImportGraphAnalyzer
 from todocs.analyzers.api_surface import APISurfaceAnalyzer
 from todocs.extractors.toon_parser import ToonParser
@@ -40,18 +38,18 @@ def _analyze_import_graph(project_path: Path) -> None:
     print(f"  Cycles:         {len(graph['cycles'])}")
 
     if graph["external_imports"]:
-        print(f"\n  Top external imports:")
+        print("\n  Top external imports:")
         for pkg, count in list(graph["external_imports"].items())[:8]:
             print(f"    {pkg:20s}  {count} imports")
 
     if graph["fan_in"]:
-        print(f"\n  Most imported modules (fan-in):")
+        print("\n  Most imported modules (fan-in):")
         for mod, fi in list(graph["fan_in"].items())[:5]:
             print(f"    {mod:30s}  ←{fi}")
 
     hubs = ig.get_hub_modules(top_n=5)
     if hubs:
-        print(f"\n  Hub modules:")
+        print("\n  Hub modules:")
         for h in hubs:
             print(f"    {h['module']:30s}  in={h['fan_in']} out={h['fan_out']}")
 
@@ -65,7 +63,7 @@ def _analyze_api_surface(project_path: Path) -> None:
 
     entry_pts = surface.get("entry_points", {})
     if entry_pts:
-        print(f"\n  Entry points:")
+        print("\n  Entry points:")
         for cmd, target in entry_pts.items():
             print(f"    {cmd} → {target}")
 
@@ -73,7 +71,7 @@ def _analyze_api_surface(project_path: Path) -> None:
     if cli_cmds:
         print(f"\n  CLI commands ({len(cli_cmds)}):")
         for cmd in cli_cmds:
-            desc = f" — {cmd['description']}" if cmd.get('description') else ""
+            desc = f" — {cmd['description']}" if cmd.get("description") else ""
             print(f"    {cmd['name']}{desc}")
 
     endpoints = surface.get("rest_endpoints", [])
@@ -127,7 +125,7 @@ def _analyze_makefile(project_path: Path) -> None:
 
     _print_section_header(f"Build Targets ({mk_data['type']})")
     for t in targets[:10]:
-        desc = f" — {t['description']}" if t.get('description') else ""
+        desc = f" — {t['description']}" if t.get("description") else ""
         print(f"  make {t['name']}{desc}")
 
 
@@ -160,10 +158,9 @@ def _analyze_code_metrics(project_path: Path) -> None:
     print(f"  Maintainability: {stats.maintainability_index:.1f}")
 
     if stats.hotspots:
-        print(f"\n  Hotspots:")
+        print("\n  Hotspots:")
         for hs in stats.hotspots[:5]:
-            print(f"    {hs['name']:30s}  CC={hs['complexity']:>3}  "
-                  f"rank={hs.get('rank','?')}  {hs['file']}")
+            print(f"    {hs['name']:30s}  CC={hs['complexity']:>3}  rank={hs.get('rank', '?')}  {hs['file']}")
 
 
 def main():

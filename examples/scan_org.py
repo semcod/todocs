@@ -30,16 +30,18 @@ def main():
 
     # Print quick summary
     for p in sorted(profiles, key=lambda x: -x.code_stats.source_lines):
-        print(f"  {p.name:30s}  {p.maturity.grade:>3s}  "
-              f"{p.code_stats.source_lines:>6,} SLOC  "
-              f"{p.tech_stack.primary_language:>10s}  "
-              f"v{p.metadata.version or '?'}")
+        print(
+            f"  {p.name:30s}  {p.maturity.grade:>3s}  "
+            f"{p.code_stats.source_lines:>6,} SLOC  "
+            f"{p.tech_stack.primary_language:>10s}  "
+            f"v{p.metadata.version or '?'}"
+        )
 
     # Category distribution
     categories = {}
     for p in profiles:
         categories[p.category] = categories.get(p.category, 0) + 1
-    print(f"\nCategories:")
+    print("\nCategories:")
     for cat, count in sorted(categories.items(), key=lambda x: -x[1]):
         print(f"  {cat:30s}  {count}")
 

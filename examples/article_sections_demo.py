@@ -48,29 +48,33 @@ def main():
     # Example 1: Build minimal article (just metrics + maturity)
     print("┌─ Minimal Article (Metrics + Maturity) ─────────────┐")
     print()
-    minimal = "\n\n".join([
-        render_frontmatter(profile, org_name, generated_at),
-        render_header(profile, org_url),
-        render_metrics(profile),
-        render_maturity(profile),
-        render_footer(generated_at),
-    ])
+    minimal = "\n\n".join(
+        [
+            render_frontmatter(profile, org_name, generated_at),
+            render_header(profile, org_url),
+            render_metrics(profile),
+            render_maturity(profile),
+            render_footer(generated_at),
+        ]
+    )
     print(minimal[:800] + "..." if len(minimal) > 800 else minimal)
     print()
 
     # Example 2: Build tech-focused article
     print("┌─ Tech-Focused Article ────────────────────────────┐")
     print()
-    tech_article = "\n\n".join([
-        render_frontmatter(profile, org_name, generated_at),
-        render_header(profile, org_url),
-        render_overview(profile, org_name),
-        render_tech_stack(profile),
-        render_architecture(profile),
-        render_dependencies(profile),
-        render_docker(profile),
-        render_footer(generated_at),
-    ])
+    tech_article = "\n\n".join(
+        [
+            render_frontmatter(profile, org_name, generated_at),
+            render_header(profile, org_url),
+            render_overview(profile, org_name),
+            render_tech_stack(profile),
+            render_architecture(profile),
+            render_dependencies(profile),
+            render_docker(profile),
+            render_footer(generated_at),
+        ]
+    )
     # Print just the tech stack section as example
     print(render_tech_stack(profile))
     print()
@@ -95,14 +99,16 @@ def main():
     # Example 5: Save custom article to file
     print("┌─ Saving Custom Article ───────────────────────────┐")
     print()
-    custom_article = "\n\n".join([
-        render_frontmatter(profile, org_name, generated_at),
-        render_header(profile, org_url),
-        render_overview(profile, org_name),
-        render_metrics(profile),
-        render_maturity(profile),
-        render_footer(generated_at),
-    ])
+    custom_article = "\n\n".join(
+        [
+            render_frontmatter(profile, org_name, generated_at),
+            render_header(profile, org_url),
+            render_overview(profile, org_name),
+            render_metrics(profile),
+            render_maturity(profile),
+            render_footer(generated_at),
+        ]
+    )
 
     output_path = Path(f"{profile.name}-custom-article.md")
     output_path.write_text(custom_article, encoding="utf-8")

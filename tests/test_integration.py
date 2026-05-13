@@ -5,7 +5,7 @@ from click.testing import CliRunner
 
 from todocs.core import scan_project, scan_organization, generate_articles
 from todocs.generators.comparison import ComparisonGenerator
-from todocs.cli import main
+from todocs.cli import main, __version__
 
 CONSTANT_3 = 3
 PORT_4 = 4
@@ -89,7 +89,7 @@ class TestCLI:
         runner = CliRunner()
         result = runner.invoke(main, ["--version"])
         assert result.exit_code == 0
-        assert "0.1.12" in result.output
+        assert __version__ in result.output
 
     def test_inspect_json(self, sample_project):
         runner = CliRunner()
