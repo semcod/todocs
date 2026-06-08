@@ -2,12 +2,19 @@
 
 app {
   name: todocs;
-  version: 0.1.11;
+  version: 0.1.13;
+  description: "Static-analysis documentation generator for project portfolios — WordPress-ready markdown articles without LLM";
+  license: Apache-2.0;
+  authors: "Softreck <info@softreck.dev>, Tom Sapletta <tom@sapletta.com>";
+  keywords: "documentation, static-analysis, code-metrics, wordpress, markdown";
+  homepage: https://github.com/wronai/todocs;
+  repository: https://github.com/wronai/todocs;
 }
 
 dependencies {
   runtime: "tomli>=2.0; python_version<'3.11', pyyaml>=6.0, jinja2>=3.1, radon>=6.0, rich>=13.0, click>=8.1";
-  dev: "pytest>=7.0, pytest-cov, black, ruff";
+  dev: "pytest>=7.0, pytest-cov, black, ruff, goal>=2.1.0, costs>=0.1.20, pfix>=0.1.60";
+  nlp: nltk>=3.8;
 }
 
 interface[type="api"] {
@@ -19,7 +26,7 @@ interface[type="cli"] {
   framework: click;
 }
 interface[type="cli"] page[name="todocs"] {
-
+  entry: todocs.cli:main;
 }
 
 workflow[name="install"] {
@@ -70,11 +77,24 @@ workflow[name="publish"] {
   step-1: run cmd=python -m twine upload dist/*;
 }
 
+tests {
+  import: testql-scenarios/**/*.testql.toon.yaml;
+}
+
+env_vars {
+  keys: OPENROUTER_API_KEY, LLM_MODEL, PFIX_AUTO_APPLY, PFIX_AUTO_INSTALL_DEPS, PFIX_AUTO_RESTART, PFIX_MAX_RETRIES, PFIX_DRY_RUN, PFIX_ENABLED, PFIX_GIT_COMMIT, PFIX_GIT_PREFIX, PFIX_CREATE_BACKUPS;
+}
+
 deploy {
   target: makefile;
 }
 
 environment[name="local"] {
-  runtime: docker-compose;
+  runtime: python;
+  env_file: .env;
+  template_file: .env.example;
   python_version: >=3.10;
+  vars: LLM_MODEL, OPENROUTER_API_KEY, PFIX_AUTO_APPLY, PFIX_AUTO_INSTALL_DEPS, PFIX_AUTO_RESTART, PFIX_CREATE_BACKUPS, PFIX_DRY_RUN, PFIX_ENABLED, PFIX_GIT_COMMIT, PFIX_GIT_PREFIX, PFIX_MAX_RETRIES;
+  runtime_llm: OPENROUTER_API_KEY;
+  runtime_pfix: PFIX_AUTO_APPLY, PFIX_AUTO_INSTALL_DEPS, PFIX_AUTO_RESTART, PFIX_CREATE_BACKUPS, PFIX_DRY_RUN, PFIX_ENABLED, PFIX_GIT_COMMIT, PFIX_GIT_PREFIX, PFIX_MAX_RETRIES;
 }
