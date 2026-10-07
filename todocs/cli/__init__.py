@@ -34,7 +34,12 @@ def main():
     Generates WordPress-ready markdown articles from source code analysis.
     No LLM required.
     """
-    pass
+    try:
+        from .autoupdate import check_for_updates
+        check_for_updates("todocs")
+    except Exception:
+        pass
+
 
 
 # Register all commands
