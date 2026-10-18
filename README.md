@@ -1,6 +1,6 @@
 # todocs
 
-[![Version](https://img.shields.io/badge/version-0.1.14-blue)](https://github.com/wronai/todocs)
+[![Version](https://img.shields.io/badge/version-0.1.15-blue)](https://github.com/wronai/todocs)
 [![Python](https://img.shields.io/badge/python-3.10+-3776AB)](https://python.org)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Tests](https://img.shields.io/badge/tests-63%20passed-brightgreen)](tests/)
@@ -9,7 +9,7 @@
 
 ## AI Cost Tracking
 
-![PyPI](https://img.shields.io/badge/pypi-costs-blue) ![Version](https://img.shields.io/badge/version-0.1.14-blue) ![Python](https://img.shields.io/badge/python-3.9+-blue) ![License](https://img.shields.io/badge/license-Apache--2.0-green)
+![PyPI](https://img.shields.io/badge/pypi-costs-blue) ![Version](https://img.shields.io/badge/version-0.1.15-blue) ![Python](https://img.shields.io/badge/python-3.9+-blue) ![License](https://img.shields.io/badge/license-Apache--2.0-green)
 ![AI Cost](https://img.shields.io/badge/AI%20Cost-$6.44-orange) ![Human Time](https://img.shields.io/badge/Human%20Time-14.3h-blue) ![Model](https://img.shields.io/badge/Model-openrouter%2Fqwen%2Fqwen3--coder--next-lightgrey)
 
 - 🤖 **LLM usage:** $6.4392 (18 commits)
